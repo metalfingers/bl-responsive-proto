@@ -1,0 +1,29 @@
+.site-section {
+
+	.l-col {
+		float: left;
+		padding: 10px;
+		width: 100%;
+
+		@include media-query ($small) {
+			width: 50%;
+		}
+
+	}
+
+	.img-wrap {
+		height: auto;
+		overflow: hidden;
+		width: 100%;
+
+		@include media-query ($small) {
+			width: 50%;
+		}
+
+	}
+
+	img {
+		max-width: 100%;
+	}
+
+}

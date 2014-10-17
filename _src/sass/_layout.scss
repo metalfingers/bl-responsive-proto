@@ -1,0 +1,70 @@
+.l-site- {
+
+	&content {
+		margin-top: 40px;
+	}
+
+	&footer {
+		background-color: $white;
+
+		.wrapper {
+			margin: 0 auto;
+		}
+	}
+
+	&header {
+		position: relative;
+		width: 100%;
+	}
+
+	&row {
+		float: left;
+		padding: 60px 0;
+		width: 100%;
+
+		&:nth-child(even) {
+			background-color: $blue;
+		}
+	}
+
+}
+
+.wrapper {
+	height: 100%;
+	margin: 0 auto;
+	overflow: auto;
+	position: relative;
+	width: 100%;
+
+	@include media-query ($medium) {
+		width: $medium;
+	}
+
+	&-narrow {
+		padding: 45px 210px 0;
+	}
+
+	&-wide {
+		padding: 0 30px 0 10px;
+	}
+
+	&-short {
+		height: 20px;
+		left: 50%;
+		margin-left: -375px;
+		overflow: hidden;
+		position: absolute;
+		z-index: 10;
+	}
+
+}
+
+.content-wrapper {
+	&.short-section {
+		left: 0;
+		overflow: visible;
+		padding: 0 210px 0;
+		position: absolute;
+		top: 50%;
+	}
+}

@@ -1,0 +1,22 @@
+$env: 'dev';
+
+//Paths
+$img-path: if($env == 'dev', '../img/', './_Assets/');
+
+
+// Colors
+$black: #313540;
+$red: #ed1c24;
+$yellow: #faba2d;
+$white: #f7f7f7;
+$blue: #c5e3ee;
+
+
+// Calculated Colors
+
+
+// Breakpoints
+$small: 760px;
+$medium: 1024px;
+$large: 1160px;
+
