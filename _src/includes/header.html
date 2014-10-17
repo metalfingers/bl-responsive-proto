@@ -1,11 +1,6 @@
 <header class="tablet">
-	<div class="hide tablet" id="seasonalAdWrapper" style="margin-top: -50px; display: block;">
-		<div class="row" id="seasonalAdBanner">
-			<a class="large-24 small-24" href="http://www.bloomingdales.com/campaign/give-pink-get-more/how-it-works/index.jsp?cm_sp=hp-_-seasonal_ad-_-pink14"><img alt="" class="displayBlock" height="50" src="http://assets.bloomingdales.com/navapp/dyn_img/homepage_pools/SEASONAL-AD_01.jpg" width="962"></a>
-		</div>
-	</div>
 
-	<div class="seasonal tablet" id="zeroNav">
+	<div class="seasonal tablet hide-for-small-only" id="zeroNav">
 		<div class="row" id="innerZeroNav">
 			<div class="large-9 small-9 columns" id="seasonalActionPoolWrapper">
 				<div id="seasonalActionPool">
@@ -15,20 +10,20 @@
 				</div>
 			</div>
 
-			<ul class="large-15 small-15 columns">
-				<li>
+			<ul id="user_prefs" class="large-13 medium-3 columns">
+				<li class="hide-for-medium-only">
 					<a href="http://www1.bloomingdales.com/store/index.ognc?cm_sp=NAVIGATION-_-TOP_NAV-_-STORES_EVENTS-n-n" id="href_StoresEvents">STORES &amp; EVENTS</a>
 				</li>
 
-				<li>&nbsp;|&nbsp;</li>
+				<li class="hide-for-medium-only">&nbsp;|&nbsp;</li>
 
-				<li id="bl_nav_account_flag">
+				<li id="bl_nav_account_flag" class="hide-for-medium-only">
 					<span id="iShip_flag"><a href="http://www1.bloomingdales.com/internationalContext/index.ognc?cm_sp=NAVIGATION-_-TOP_NAV-_-INTERNATIONAL_SHOPPING-n-n"><img id="headerCountryFlag" src="http://assets.bloomingdales.com/navapp/web20/assets/img/internationalShipping/hfrFlags/US.gif"></a></span><a href="http://www1.bloomingdales.com/internationalContext/index.ognc?cm_sp=NAVIGATION-_-TOP_NAV-_-INTERNATIONAL_SHOPPING-n-n"><span>USD</span></a>
 				</li>
 
-				<li>&nbsp;|&nbsp;</li>
+				<li class="hide-for-medium-only">&nbsp;|&nbsp;</li>
 
-				<li id="bl_nav_acctLi">
+				<li id="bl_nav_acctLi" class="hide-for-medium-only">
 					<a href="https://www.bloomingdales.com/account/myaccount?cm_sp=NAVIGATION-_-TOP_NAV-_-MY_ACCOUNT-n-n" id="bl_nav_myAcct">MY ACCOUNT</a>
 
 					<div id="signOutBody" style="display:none">
@@ -36,21 +31,21 @@
 					</div>
 				</li>
 
-				<li>&nbsp;|&nbsp;</li>
+				<li class="hide-for-medium-only">&nbsp;|&nbsp;</li>
 
 				<li>
 					<a href="https://www.bloomingdales.com/wishlist/mylist?cm_sp=NAVIGATION-_-TOP_NAV-_-WISH_LIST-n-n" id="href_wishList">WISH LIST</a>
 				</li>
 
-				<li>&nbsp;|&nbsp;</li>
+				<li class="hide-for-medium-only">&nbsp;|&nbsp;</li>
 
-				<li id="qb_headerItemContainer">
+				<li id="qb_headerItemContainer" class="hide-for-medium-only">
 					<div class="yui-skin-sam" id="qb_showBagItems">
 						<a class="qb_closedOverlayLabel" href="http://www1.bloomingdales.com/bag/index.ognc?cm_sp=NAVIGATION-_-TOP_NAV-_-BAG-n-n" id="qb_addToBagOverlayLabel"><span id="qb_userName">MY</span> BROWN BAG: <span id="brownBagItemsTotal">(0)</span></a>
 					</div>
 				</li>
 
-				<li class="topNavBag proper_nav_sprite">
+				<li class="topNavBag proper_nav_sprite hide-for-medium-only">
 					<a href="http://www1.bloomingdales.com/bag/index.ognc?cm_sp=NAVIGATION-_-TOP_NAV-_-BAG-n-n"><img id="myShoppingBag" src="http://assets.bloomingdales.com/navapp/img/spacer.gif"></a>
 				</li>
 			</ul>
@@ -61,16 +56,17 @@
 
 	<div class="row" id="aboveNav">
 		<div class="small-24 large-24 medium-24 columns">
+		<div class="hamburglar show-for-small-only">&#9776;</div>
 			<div class="bloomiesLogo proper_nav_sprite">
 				<a href="http://www1.bloomingdales.com/index?cm_sp=NAVIGATION-_-TOP_NAV-_-TOP_BLOOMIES_ICON"><img alt="Bloomingdale's" id="bloomiesLogo" src="http://assets.bloomingdales.com/navapp/img/spacer.gif"></a>
 			</div>
 
 			<div class="aboveNavRight">
-				<div id="aboveNavBanner">
+				<div id="aboveNavBanner" class="hide-for-medium-down">
 					<a href="javascript:pop('/popup.ognc?popupID=525128&cm_sp=hp-_-header_footer-_-loyallist_freeship_exclusions','myDynaPop','width=575,height=550')"><img alt="Global Banner" class="displayBlock" height="15" src="http://assets.bloomingdales.com/navapp/dyn_img/homepage_pools/0221_header.gif" width="334"></a>
 				</div>
 
-				<div class="aboveNavSearch">
+				<div class="aboveNavSearch hide-for-medium">
 					<form action="http://www1.bloomingdales.com/shop/search" id="keywordSearch" method="get" name="keywordSearch">
 						<div class="aboveNavSearchInput">
 							<input autocomplete="off" class="aboveNavSearchBox ui-autocomplete-input" maxlength="72" name="keyword" placeholder="Enter Keyword or Web ID" title="Keyword Search" type="text" value="">
@@ -79,6 +75,7 @@
 
 					<div class="clearBoth"></div>
 				</div>
+				<div class="tabmenu show-for-medium-only"><img src="./img/tabmenu.png" alt=""></div>
 			</div>
 
 			<div class="clearBoth"></div>
@@ -87,7 +84,7 @@
 
 	<nav id="nav">
 		<div class="row">
-			<div class="large-24 medium-24 small-24 columns" id="globalNavigation">
+			<div class="large-24 medium-24 small-1 columns" id="globalNavigation">
 				<ul id="mainNav">
 					<li class="nav-item" id="flexLabel_1003044">
 						<a href="/catalog/index.ognc?CategoryID=1003044&amp;cm_sp=NAVIGATION-_-TOP_NAV-_-100%25-n-n" id="flexLabelLink_1">100%</a>
@@ -150,7 +147,7 @@
 			</div>
 		</div>
 
-		<div id="globalFlyouts">
+		<div id="globalFlyouts" class="hide-for-small-only">
 			<div class="flyout-off subnav" id="flyout_3864">
 				<div>
 					<div class="flyoutCol">

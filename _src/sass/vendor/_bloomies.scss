@@ -2145,7 +2145,7 @@ header #zeroNav {
     color: #fff
 }
 header #zeroNav #seasonalActionPoolWrapper {
-    width: 26.72727rem;
+    // width: 26.72727rem;
     text-align: left;
     float: left;
     cursor: pointer
@@ -2164,7 +2164,7 @@ header #zeroNav a, header #zeroNav a:link, header #zeroNav a:visited, header #ze
 header #zeroNav #innerZeroNav {
     font-size: 1rem;
     height: 2.54545rem;
-    width: 87.45455em;
+/*     width: 87.45455em; */
     margin: 0 auto;
     text-align: right
 }
@@ -2183,7 +2183,7 @@ header #zeroNav #innerZeroNav ul {
 header #zeroNav #innerZeroNav ul li {
     display: inline-block;
     list-style: none;
-    float: none;
+    // float: none;
     text-align: right;
     margin-left: 0.90909rem;
     line-height: 2.54545rem
@@ -2192,7 +2192,7 @@ header #zeroNav #innerZeroNav #iShip_flag img {
     margin: -0.18182rem 0.63636rem 0 0
 }
 header #aboveNav {
-    width: 87.45455em;
+/*     width: 87.45455em; */
     margin: 0 auto;
     padding: 2.09091rem 0
 }
@@ -2880,7 +2880,7 @@ body .row #bl_main_container {
 body {
     margin: 0;
     line-height: normal;
-    min-width: 87.45455rem
+/*     min-width: 87.45455rem */
 }
 a, a:link, a:active, a:visited {
     font-size: 1rem;

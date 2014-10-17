@@ -9,11 +9,15 @@ blProto = {
 
 	init: function(){
 		this.flyOuts();
-		this.secondThing();
+		this.events();
 	},
 
 	events: function(){
+		// $('#mainNav').draggable({axis: 'x', containment: "#nav > .row"});
 
+		$('.hamburglar').click(function(event) {
+			$('#nav').toggleClass('is-active');
+		});
 	},
 
 	flyOuts: function(){

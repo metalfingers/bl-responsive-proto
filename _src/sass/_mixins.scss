@@ -1,5 +1,28 @@
-@mixin media-query ($break-point) {
+@mixin media-query ($name) {
+  $break-point: 0em;
+
+  @if $name == "medium" {
+    $break-point: 40.063em;
+  } @else if $name == "large" {
+    $break-point: 64.063em;
+  }
+
 	@media screen and (min-width: $break-point) {
 		@content;
 	}
+}
+
+
+@mixin media-query-max ($name) {
+  $break-point: 0em;
+
+  @if $name == "small" {
+    $break-point: 40.063em;
+  } @else if $name == "medium" {
+    $break-point: 64.063em;
+  }
+
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
 }

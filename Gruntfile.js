@@ -83,6 +83,7 @@ module.exports = function(grunt){
       dev: {
         src: [
               '<%= build.js.src %>/vendor/jquery-1.11.1.min.js',
+              '<%= build.js.src %>/vendor/jquery-ui.min.js',
               '<%= build.js.src %>/vendor/lodash.underscore.min.js',
               '<%= build.js.src %>/vendor/foundation.min.js',
               '<%= build.js.src %>/scripts.js'],
@@ -91,6 +92,7 @@ module.exports = function(grunt){
       prod: {
         src: [
               '<%= build.tmp %>/vendor/jquery-1.11.1.min.js',
+              '<%= build.js.src %>/vendor/jquery-ui.min.js',
               '<%= build.tmp %>/vendor/lodash.underscore.min.js',
               '<%= build.js.src %>/vendor/foundation.min.js',
               '<%= build.tmp %>/scripts.js'],
