@@ -1,4 +1,4 @@
-blProto = {
+var blProto = {
 
 	self: this,
 	
@@ -10,6 +10,7 @@ blProto = {
 	init: function(){
 		this.flyOuts();
 		this.events();
+		this.lookbooks();
 	},
 
 	events: function(){
@@ -29,8 +30,14 @@ blProto = {
 		});
 	},
 
-	secondThing: function(){
-		
+	lookbooks: function(){
+		var testLookBook = new BloomiesLookbook($('.lookbook-wrapper'), {breakPoint: 640});
+		testLookBook.activate();
 	}
 
-}.init();
+};
+
+
+$( window ).load(function(){
+	blProto.init();
+});

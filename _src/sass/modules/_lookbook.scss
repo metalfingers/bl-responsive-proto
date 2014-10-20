@@ -1,0 +1,68 @@
+.lookbook- {
+  
+  &wrapper {
+    &.is-active {
+      overflow: hidden;
+    }
+  }
+
+  &nav-arrows {
+    
+    .go-to-prev,
+    .go-to-next {
+      background-color: #fff;
+      cursor: pointer;
+      height: 4%;
+      position: absolute;
+      top: 50%;
+      width: 2%;
+    }
+
+    .go-to-prev {
+      left: 0%;
+    }
+
+    .go-to-next {
+      left: 98%;
+    }
+
+    &.layout-vertical {
+
+      .go-to-prev,
+      .go-to-next {
+        left: 50%;
+      }
+      
+      .go-to-prev {
+        top: 0%;
+      }
+
+      .go-to-next {
+        top: 98%;
+      }
+
+    }
+
+  }
+
+  &pagination {
+    position: absolute;
+    right: 0%;
+    width: 10%;
+
+    li {
+      cursor: pointer;
+      float: left;
+      margin-right: 10%;
+    }
+  }
+
+  &page-wrapper {
+
+  }
+
+  &page {
+   
+  }
+
+}
