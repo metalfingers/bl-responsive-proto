@@ -1,7 +1,7 @@
 {
-  "name": "glucagonapp.com",
+  "name": "bl-responsive-proto",
   "version": "0.0.1",
-  "description": "glucagonapp.com",
+  "description": "bloomingdales responsive prototype",
   "private": true,
   "devDependencies": {
     "grunt": "^0.4.5",

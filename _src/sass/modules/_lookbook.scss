@@ -62,7 +62,11 @@
   }
 
   &page {
-   
+    visibility: hidden;
+
+    &:first-child {
+      visibility: visible;
+    }
   }
 
 }
