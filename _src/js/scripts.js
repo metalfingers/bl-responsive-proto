@@ -31,8 +31,17 @@ var blProto = {
 	},
 
 	lookbooks: function(){
-		var testLookBook = new BloomiesLookbook($('.lookbook-wrapper'), {breakPoint: 640});
-		testLookBook.activate();
+		var testLookBook1 = new BloomiesLookbook($('#tester1'), {
+															breakPoint: 640,
+															transitionStyle: 'fade'
+														});
+		testLookBook1.activate();
+
+		var testLookBook2 = new BloomiesLookbook($('#tester2'), {
+															breakPoint: 0,
+															transitionStyle: 'slide'
+														});
+		testLookBook2.activate();
 	}
 
 };
