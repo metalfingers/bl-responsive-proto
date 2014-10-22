@@ -4,40 +4,43 @@
     &.is-active {
       overflow: hidden;
     }
+
+    video {
+      width: 100%;
+    }
   }
 
-  &nav-arrows {
-    
-    .go-to-prev,
-    .go-to-next {
-      background-color: #fff;
-      cursor: pointer;
-      height: 4%;
-      position: absolute;
-      top: 50%;
-      width: 2%;
-    }
+  &nav-arrow {
+    position: absolute;
+    z-index: 10;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 2rem;
+    height: 6.5%;
+    position: absolute;
+    top: 50%;
+    width: 2%; 
 
-    .go-to-prev {
+    &.go-to-prev {
       left: 0%;
     }
 
-    .go-to-next {
+    &.go-to-next {
       left: 98%;
     }
 
     &.layout-vertical {
 
-      .go-to-prev,
-      .go-to-next {
+      &.go-to-prev,
+      &.go-to-next {
         left: 50%;
       }
       
-      .go-to-prev {
+      &.go-to-prev {
         top: 0%;
       }
 
-      .go-to-next {
+      &.go-to-next {
         top: 98%;
       }
 
@@ -46,9 +49,12 @@
   }
 
   &pagination {
+    background-color: #fff;
+    font-size: 1.5rem;
     position: absolute;
     right: 0%;
     width: 10%;
+    z-index: 10;
 
     li {
       cursor: pointer;
@@ -59,14 +65,11 @@
 
   &page-wrapper {
 
+    z-index: 1;
   }
 
   &page {
-    visibility: hidden;
-
-    &:first-child {
-      visibility: visible;
-    }
+    float: left;
   }
 
 }
