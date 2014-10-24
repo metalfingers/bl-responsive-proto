@@ -39,7 +39,7 @@ var blProto = {
 
 		var testLookBook2 = new BloomiesLookbook($('#tester2'), {
 															breakPoint: 0,
-															transitionStyle: 'slide'
+															transitionStyle: 'fade'
 														});
 		testLookBook2.activate();
 	}

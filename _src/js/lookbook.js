@@ -2,13 +2,38 @@
 
 var BloomiesLookbook = function($lookbook, options) {
 
-  var _slideDimensions = function(){
+  var $cache = {},
+
+      _cacheLookBook = function(){
+        $cache = {}; // empty the cache
+        $cache.lookbook = $lookbook;
+        $cache.pages = [];
+        $cache.lookbook
+          .children('.lookbook-page-wrapper')
+          .children('.lookbook-page')
+          .each(function(index, el) {
+            $cache.pages[index] = $(el); // add lookbook page to pages array
+          });
+        $cache.pagination = [];
+        $cache.lookbook
+          .children('.lookbook-pagination')
+          .find('li')
+          .each(function(index, el) {
+            $cache.pagination[index] = $(el); // add pagination items to pagination array
+          });
+        $cache.nav = {
+          nextBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-next'),
+          prevBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-prev')
+        };
+      },
+
+      _slideDimensions = function(){
         var tallest = 0,
             widest = 0;
 
-        $lookbook.find('.lookbook-page').each(function(index, el) {
-          $(el).height() > tallest ? tallest = $(el).height() : tallest = tallest;
-          $(el).width() > widest ? widest = $(el).height() : widest = widest;
+        $.each($cache.pages, function(index, el) {
+          el.height() > tallest ? tallest = el.height() : tallest = tallest;
+          el.width() > widest ? widest = el.height() : widest = widest;
         });
 
         return {
@@ -19,15 +44,26 @@ var BloomiesLookbook = function($lookbook, options) {
 
       _setCurrentPage = function(pageNum){
 
-        pageNum === undefined || -1 ? pageNum = 0 : pageNum = pageNum; // set 0 as the default
+        pageNum === undefined || -1 ? 1 : pageNum; // set 1 as the default
 
-        $( $lookbook.find('.lookbook-page')[ pageNum ] )
+        $.each($cache.pages, function(index, el) {
+          el.removeClass('current-page');
+        });
+
+        $cache.pages
+          .filter(function(el, index) {
+            return $(el).data('page-number') === pageNum;
+          })[0]
           .addClass('current-page');
 
-        if (options.transitionStyle === 'fade') {
-          $lookbook.find('.current-page').css('opacity', 1);
-        };
+        return _getCurrentPage();
+      },
 
+      _getCurrentPage = function(){
+        return $cache.pages
+          .filter(function(el, index){
+            return $(el).hasClass('current-page');
+          })[0];
       },
 
       _keepInBounds = function(direction, transitionFunction, slideNumber) {
@@ -37,12 +73,11 @@ var BloomiesLookbook = function($lookbook, options) {
 
       // toPage is an int
       _transitionFade = function(toPage){
-        $lookbook.find('.lookbook-page.current-page')
-          .animate({opacity: 0}, 500)
-          .removeClass('current-page');
-        $( $lookbook.find('.lookbook-page:not(.lookbook-page .lookbook-page)')[ toPage ] )
-          .animate({opacity: 1}, 500)
-          .addClass('current-page');
+        _getCurrentPage()
+          .animate({opacity: 0}, 500, function(){
+            _setCurrentPage(toPage)
+              .animate({opacity: 1}, 500);            
+          });
       },
 
       _transitionSkip = function(){
@@ -50,7 +85,7 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _transitionSlide = function(){
-        $lookbook.find('.lookbook-page')
+        
       };
 
 
@@ -65,6 +100,9 @@ var BloomiesLookbook = function($lookbook, options) {
 
     activate: function(){
       var _this = this;
+
+      // cache the lookbook pieces first!
+      _cacheLookBook();
 
       // run through the options at least once
       if (!_this.state.optionsSet) {
@@ -84,31 +122,29 @@ var BloomiesLookbook = function($lookbook, options) {
         return;
       }
 
-      $lookbook
+      // add .is-active to the lookbook wrapper, set height
+      $cache.lookbook
         .addClass('is-active')
         .css('height', _slideDimensions().height );
 
-
-      $lookbook.find('.lookbook-page')
-        .each(function(index, el) {
-          $(el).css('width', $lookbook.find('.lookbook-page-wrapper').width() );
-          // $(el).css('left', $lookbook.find('.lookbook-page-wrapper').width() );
-          $(el).css('position', 'absolute');
-        });
+      $.each($cache.pages, function(index, el) {
+        el.css('width', $cache.lookbook.width() );
+        el.css('position', 'absolute');
+      });
    
-      _setCurrentPage(0);
-
+      _setCurrentPage(1);
+      _this.state.transition( 'forward', 1);
       _this.state.isActive = true;
 
 
 
 
-$lookbook.find('.go-to-next:not(.go-to-next .go-to-next)').click(function(event) {
-  _this.state.transition( 'forward', $lookbook.find('.lookbook-page').index( $lookbook.find('.current-page') ) + 1 );
+$cache.nav.nextBtn.click(function(event) {
+  _this.state.transition( 'forward', _getCurrentPage().data('page-number') + 1);
 });
 
-$lookbook.find('.go-to-prev:not(.go-to-prev .go-to-prev)').click(function(event) {
-  _this.state.transition( 'backward', $lookbook.find('.lookbook-page').index( $lookbook.find('.current-page') ) - 1 );
+$cache.nav.prevBtn.click(function(event) {
+  _this.state.transition( 'backward', _getCurrentPage().data('page-number') - 1);
 });
     },
 
