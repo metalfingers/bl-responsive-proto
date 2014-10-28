@@ -127,9 +127,13 @@ var BloomiesLookbook = function($lookbook, options) {
         return;
       }
 
-      // add .is-active to the lookbook wrapper, set height
+      // add .is-active to the lookbook wrapper
       $cache.lookbook
-        .addClass('is-active')
+        .addClass('is-active');
+
+      // set heightof lookbook page wrapper
+      $cache.lookbook
+        .children('.lookbook-page-wrapper')
         .css('height', _slideDimensions().height );
 
       $.each($cache.pages, function(index, el) {
