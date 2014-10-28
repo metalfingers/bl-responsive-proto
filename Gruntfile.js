@@ -203,7 +203,7 @@ module.exports = function(grunt){
         options: {
           compass: true,
           style: 'expanded',
-          sourcemap: true
+          sourcemap: 'auto'
         },
         files: {
           '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main.scss'
@@ -212,7 +212,8 @@ module.exports = function(grunt){
       prod: {
         options: {
           compass: true,
-          style: 'compressed'
+          style: 'compressed',
+          sourcemap: 'none'
         },
         files: {
           '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main.scss'
