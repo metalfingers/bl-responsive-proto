@@ -49,7 +49,7 @@ var BloomiesLookbook = function($lookbook, options) {
 
       _setCurrentPage = function(pageNum){
 
-        pageNum === (undefined || -1) ? pageNum = 1 : pageNum = pageNum; // set 1 as the default
+        pageNum = pageNum === (undefined || -1) ?  1 : pageNum; // set 1 as the default
 
         $.each($cache.pages, function(index, el) {
           el.removeClass('current-page');
