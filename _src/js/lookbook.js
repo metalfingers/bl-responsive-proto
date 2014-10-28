@@ -51,6 +51,7 @@ var BloomiesLookbook = function($lookbook, options) {
 
         pageNum = pageNum === (undefined || -1) ?  1 : pageNum; // set 1 as the default
 
+        // set current-page class on lookbook pages
         $.each($cache.pages, function(index, el) {
           el.removeClass('current-page');
         });
@@ -60,6 +61,19 @@ var BloomiesLookbook = function($lookbook, options) {
             return $(el).data('page-number') === pageNum;
           })[0]
           .addClass('current-page');
+
+        // set current-page class on pagination items
+        if ($cache.pagination.length > 0) {
+          $.each($cache.pagination, function(index, val) {
+            val.removeClass('current-page');
+          });
+
+          $cache.pagination
+            .filter(function(el, index) {
+              return $(el).data('for-page-number') === pageNum;
+            })[0]
+            .addClass('current-page');
+        }
 
         return _getCurrentPage();
       },
