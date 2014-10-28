@@ -11,15 +11,15 @@
   }
 
   &nav-arrow {
-    position: absolute;
-    z-index: 10;
     background-color: #fff;
     cursor: pointer;
     font-size: 2rem;
     height: 6.5%;
     position: absolute;
+    position: absolute;
     top: 50%;
     width: 2%; 
+    z-index: 20;
 
     &.go-to-prev {
       left: 0%;
@@ -70,6 +70,11 @@
 
   &page {
     float: left;
+
+    &.current-page {
+      z-index: 10;
+    }
+    
   }
 
 }
