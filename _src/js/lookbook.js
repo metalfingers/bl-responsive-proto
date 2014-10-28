@@ -1,6 +1,11 @@
-"use strict";
+var cl = function(arg){
+  console.log(arg);
+};
+
+
 
 var BloomiesLookbook = function($lookbook, options) {
+  "use strict";
 
   var $cache = {},
 
@@ -32,19 +37,19 @@ var BloomiesLookbook = function($lookbook, options) {
             widest = 0;
 
         $.each($cache.pages, function(index, el) {
-          el.height() > tallest ? tallest = el.height() : tallest = tallest;
-          el.width() > widest ? widest = el.height() : widest = widest;
+          tallest = el.height() > tallest ? el.height() : tallest;
+          widest = el.width() > widest ? el.width() : widest;
         });
 
         return {
           height: tallest,
           width: widest
-        }
+        };
       },
 
       _setCurrentPage = function(pageNum){
 
-        pageNum === undefined || -1 ? 1 : pageNum; // set 1 as the default
+        pageNum === (undefined || -1) ? pageNum = 1 : pageNum = pageNum; // set 1 as the default
 
         $.each($cache.pages, function(index, el) {
           el.removeClass('current-page');
@@ -67,7 +72,6 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _keepInBounds = function(direction, transitionFunction, slideNumber) {
-
         transitionFunction(slideNumber);
       },
 
@@ -75,6 +79,7 @@ var BloomiesLookbook = function($lookbook, options) {
       _transitionFade = function(toPage){
         _getCurrentPage()
           .animate({opacity: 0}, 500, function(){
+
             _setCurrentPage(toPage)
               .animate({opacity: 1}, 500);            
           });
@@ -109,7 +114,7 @@ var BloomiesLookbook = function($lookbook, options) {
         // loop through all options and run them...may be a better idea to 
         // match option names and setOption methods and just run the ones that
         // exist in the options object.
-        for (opt in _this.setOptions) {
+        for (var opt in _this.setOptions) {
           _this.setOptions[opt].apply(_this);
         }
 
@@ -210,11 +215,12 @@ $cache.nav.prevBtn.click(function(event) {
           case "fade":
             // stuff
             $lookbook.find('.lookbook-page:not(.lookbook-page .lookbook-page)').css('opacity', 0);
-            _this.state.transition = function(direction, destination) { _keepInBounds(direction, _transitionFade, destination); }
+            _this.state.transition = function(direction, destination) { _keepInBounds(direction, _transitionFade, destination); };
             break;
           case "skip":
             // stuff
             _transitionSkip();
+            break;
           default:
             // slide is the default
             _transitionSlide();
@@ -222,5 +228,6 @@ $cache.nav.prevBtn.click(function(event) {
       }
 
     }
-  } 
+
+  };
 };
