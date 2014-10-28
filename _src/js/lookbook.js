@@ -137,20 +137,12 @@ var BloomiesLookbook = function($lookbook, options) {
         el.css('position', 'absolute');
       });
    
+      _this.setEventHandlers();
+
       _setCurrentPage(1);
       _this.state.transition( 'forward', 1);
       _this.state.isActive = true;
 
-
-
-
-$cache.nav.nextBtn.click(function(event) {
-  _this.state.transition( 'forward', _getCurrentPage().data('page-number') + 1);
-});
-
-$cache.nav.prevBtn.click(function(event) {
-  _this.state.transition( 'backward', _getCurrentPage().data('page-number') - 1);
-});
     },
 
     kill: function(){
@@ -227,6 +219,39 @@ $cache.nav.prevBtn.click(function(event) {
         }
       }
 
+    },
+
+    setEventHandlers: function(){
+      var _this = this;
+
+      $cache.nav.nextBtn.click(function(event) {
+        _this.goToNext();
+      });
+
+      $cache.nav.prevBtn.click(function(event) {
+        _this.goToPrev();
+      });
+
+      $.each($cache.pagination, function(index, val) {
+          $(val).click(function(event) {
+            _this.goToPage($(this).data('for-page-number'));
+          });
+       }); 
+    },
+
+    goToNext: function(){
+      var _this = this;
+      _this.state.transition( 'forward', _getCurrentPage().data('page-number') + 1);
+    },
+
+    goToPrev: function(){
+      var _this = this;
+      _this.state.transition( 'backward', _getCurrentPage().data('page-number') - 1);
+    },
+
+    goToPage: function(pageNum) {
+      var _this = this;
+      _this.state.transition( 'forward', pageNum);
     }
 
   };
