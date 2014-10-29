@@ -86,6 +86,13 @@
       line-height: 1.9rem;
       position: absolute;
       top: 0;
+
+      @media only screen and (max-width: 40.063em) {
+        left: auto !important;
+        position: relative;
+        top: auto !important;
+        width: 100% !important;
+      }
     }
 
     &[data-page-number="1"] {
