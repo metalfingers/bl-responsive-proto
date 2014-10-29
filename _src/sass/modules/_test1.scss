@@ -2,6 +2,10 @@
 
   .lookbook-nav-arrow {
     width: 3%;
+
+    &.go-to-next {
+      left: 97.15%;
+    } 
   }
 
   .lookbook-title {
@@ -26,6 +30,53 @@
       }
     }
 
+  }
+  
+
+
+
+  .shop-menu {
+    background-color: $white;
+    cursor: pointer;
+    height: 1.5rem;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 145px;
+    z-index: 20;
+
+    &.is-active {
+      height: auto;
+
+      span {
+        background-image: url('../img/test1/close.png');
+      }
+    }
+  }
+
+  .shop-heading {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+
+    span {
+      background-image: url('../img/test1/hamburger.png');
+      height: 14px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 14px;
+    }
+  }
+
+  .shop-cat {
+    height: 1.5rem;
+    overflow: hidden;
+
+    &.is-active {
+      font-weight: bold;
+      height: auto;
+    }
   }
 
   .lookbook-page {

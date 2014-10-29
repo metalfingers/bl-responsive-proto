@@ -31,7 +31,40 @@
 					<li data-for-page-number="3">3</li>
 					<li data-for-page-number="4">4</li>
 				</ol>
-
+				<div class="shop-menu hide-for-small-only">
+					<div class="shop-heading">shop all moncler<span></span></div>
+					<div class="shop-categories">
+						<ul>
+							<li class="shop-cat">women
+								<ul>
+									<li>
+										<div>Lorem ipsum.</div>
+										<div>Consequuntur, totam.</div>
+										<div>Numquam, non!</div>
+									</li>
+								</ul>
+							</li>
+							<li class="shop-cat">women
+								<ul>
+									<li>
+										<div>Lorem ipsum.</div>
+										<div>Qui, tempora.</div>
+										<div>Odit, dignissimos!</div>
+									</li>
+								</ul>
+							</li>
+							<li class="shop-cat">women
+								<ul>
+									<li>
+										<div>Lorem ipsum.</div>
+										<div>Harum, excepturi.</div>
+										<div>Omnis, ex!</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
 
 				<div class="lookbook-page-wrapper">
 					<div class="lookbook-page" data-page-number="1">
@@ -72,8 +105,8 @@
 				<div class="row">
 					<div class="lookbook-social-media column medium-9 large-9 medium-centered large-centered">
 						<a href="#"><img src="img/test1/facebook.png" alt=""></a>
-						<a href="#"><img src="img/test1/facebook.png" alt=""></a>
-						<a href="#"><img src="img/test1/facebook.png" alt=""></a>
+						<a href="#"><img src="img/test1/twitter.png" alt=""></a>
+						<a href="#"><img src="img/test1/pinterest.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -83,6 +116,18 @@
 	</main>
 	
 	@@include('includes/footer.html')
+
+	<script>
+	// bootleg initialization
+		$('.shop-heading').click(function(event) {
+			$('.shop-menu').toggleClass('is-active');
+		});
+
+		$('.shop-cat').click(function(event) {
+			$('.shop-cat').not($(this)).removeClass('is-active');
+			$(this).toggleClass('is-active');
+		});
+	</script>
 
 </body>
 </html>
