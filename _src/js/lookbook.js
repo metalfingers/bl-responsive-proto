@@ -86,21 +86,21 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _keepInBounds = function(direction, transitionFunction, slideNumber) {
-        transitionFunction(slideNumber);
+        transitionFunction(direction, slideNumber);
       },
 
       // toPage is an int
-      _transitionFade = function(toPage){
-        _getCurrentPage()
-          .animate({opacity: 0}, 500, function(){
-
-            _setCurrentPage(toPage)
-              .animate({opacity: 1}, 500);            
-          });
+      _transitionFade = function(direction, toPage){
+        _getCurrentPage().removeClass('transition-fade-in');
+        _setCurrentPage(toPage).addClass('transition-fade-in');
       },
 
-      _transitionSkip = function(){
+      _transitionSkip = function(direction, toPage){
 
+      },
+
+      _transitionSlide = function(direction, toPage){
+        
       },
 
       _transitionSlide = function(){
@@ -224,7 +224,9 @@ var BloomiesLookbook = function($lookbook, options) {
         switch (options.transitionStyle) {
           case "fade":
             // stuff
-            $lookbook.find('.lookbook-page:not(.lookbook-page .lookbook-page)').css('opacity', 0);
+            $.each($cache.pages, function(index, val) {
+               $(val).addClass('transition-fade');
+            });
             _this.state.transition = function(direction, destination) { _keepInBounds(direction, _transitionFade, destination); };
             break;
           case "skip":
