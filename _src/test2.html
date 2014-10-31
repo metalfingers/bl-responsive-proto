@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	
+		Bloomingdales responsive template
+	</title>
+
+	@@include('includes/meta.html')
+
+</head>
+<body>
+
+	@@include('includes/header.html')
+
+	
+	<main role="main" class="l-site-content">
+
+		<!-- .lookbook-wrapper>.lookbook-nav-arrow.layout-vertical.go-to-prev+.lookbook-nav-arrow.layout-vertical.go-to-next+(.lookbook-page-wrapper>(.lookbook-page>img[src=http://lorempixel.com/1000/400/food/$])*3) -->
+
+		<div class="row">
+			<div id="tester1" class="test-1 lookbook-wrapper small-24 medium-24 large-24">
+				<div class="lookbook-nav-arrow layout-horizontal go-to-prev hide-for-small-only"><img src="img/test1/nav-prev.png"></div>
+				<div class="lookbook-nav-arrow layout-horizontal go-to-next hide-for-small-only"><img src="img/test1/nav-next.png"></div>
+				<div class="lookbook-title">
+					<img src="img/test1/title.png" alt="">
+				</div>
+				<ol class="lookbook-pagination hide-for-small-only">
+					<li data-for-page-number="1" class="current-page">1</li>
+					<li data-for-page-number="2">2</li>
+					<li data-for-page-number="3">3</li>
+					<li data-for-page-number="4">4</li>
+				</ol>
+				<div class="shop-menu hide-for-small-only">
+					<div class="shop-heading">shop all moncler<span></span></div>
+					<div class="shop-categories">
+						<ul>
+							<li class="shop-cat">women
+								<ul>
+									<li>
+										<div>Lorem ipsum.</div>
+										<div>Consequuntur, totam.</div>
+										<div>Numquam, non!</div>
+									</li>
+								</ul>
+							</li>
+							<li class="shop-cat">women
+								<ul>
+									<li>
+										<div>Lorem ipsum.</div>
+										<div>Qui, tempora.</div>
+										<div>Odit, dignissimos!</div>
+									</li>
+								</ul>
+							</li>
+							<li class="shop-cat">women
+								<ul>
+									<li>
+										<div>Lorem ipsum.</div>
+										<div>Harum, excepturi.</div>
+										<div>Omnis, ex!</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="lookbook-page-wrapper">
+					<div class="lookbook-page" data-page-number="1">
+						<img src="img/test1/images/pg1.jpg" alt="">
+						<div class="page-caption lorem1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+						<div class="page-caption lorem2">Tempora quo possimus impedit sit. Odit ut porro, at dolor!</div>
+					</div>
+					<div class="lookbook-page" data-page-number="2">
+						<div class="row">
+							<div class="small-24 medium-12 large-12 column">	
+								<img src="img/test1/images/pg2-1.jpg" alt="">
+								<div class="page-caption lorem1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, cupiditate?</div>
+							</div>
+							<div class="small-24 medium-12 large-12 column">
+								<img src="img/test1/images/pg2-2.jpg" />
+								<div class="page-caption lorem2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, cupiditate?</div>
+							</div>
+						</div>
+					</div>
+					<div class="lookbook-page" data-page-number="3">
+						<img src="img/test1/images/pg3.jpg" alt="">
+						<div class="page-caption lorem1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+						<div class="page-caption lorem2">Tempora quo possimus impedit sit. Odit ut porro, at dolor!</div>
+					</div>
+					<div class="lookbook-page" data-page-number="4">
+						<div class="row">
+							<div class="small-24 medium-12 large-12 column">	
+								<img src="img/test1/images/pg4-1.jpg" alt="">
+								<div class="page-caption lorem1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, cupiditate?</div>
+							</div>
+							<div class="small-24 medium-12 large-12 column">
+								<img src="img/test1/images/pg4-2.jpg" />
+								<div class="page-caption lorem2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="lookbook-social-media column medium-9 large-9 medium-centered large-centered">
+						<a href="#"><img src="img/test1/facebook.png" alt=""></a>
+						<a href="#"><img src="img/test1/twitter.png" alt=""></a>
+						<a href="#"><img src="img/test1/pinterest.png" alt=""></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+	</main>
+	
+	@@include('includes/footer.html')
+
+	<script>
+
+	var testLookBook1 = new BloomiesLookbook($('#tester1'), {
+															breakPoint: 640,
+															transitionStyle: 'cards'
+														});
+		testLookBook1.activate();
+	// bootleg initialization
+		$('.shop-heading').click(function(event) {
+			$('.shop-menu').toggleClass('is-active');
+		});
+
+		$('.shop-cat').click(function(event) {
+			$('.shop-cat').not($(this)).removeClass('is-active');
+			$(this).toggleClass('is-active');
+		});
+	</script>
+
+</body>
+</html>

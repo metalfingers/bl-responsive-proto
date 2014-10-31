@@ -103,8 +103,16 @@ var BloomiesLookbook = function($lookbook, options) {
         
       },
 
-      _transitionSlide = function(){
+      _transitionCards = function(direction, toPage){
         
+        switch (direction) {
+          case "forward":
+            $cache.pagination[toPage].css('left', function(){
+              $(this).width();
+            })
+            .addClass('is-sliding')
+            .animate({'left': 0}, 500);
+        }
       };
 
 
@@ -222,7 +230,7 @@ var BloomiesLookbook = function($lookbook, options) {
 
       // transitionStyle: defines the transition between slides
       // input: string
-      // options: "slide" [default], "fade", "skip"
+      // options: "slide" [default], "fade", "skip", "cards"
       transitionStyle: function(){
         var _this = this;
 
@@ -237,6 +245,11 @@ var BloomiesLookbook = function($lookbook, options) {
           case "skip":
             // stuff
             _transitionSkip();
+            break;
+          case "cards":
+            // stuff
+            // $lookbook.find('.lookbook-page:not(.lookbook-page .lookbook-page)').css('opacity', 0);
+            _this.state.transition = function(direction, destination) { _keepInBounds(direction, _transitionCards, destination); };
             break;
           default:
             // slide is the default
