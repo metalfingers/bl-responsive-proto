@@ -1,6 +1,8 @@
 .lookbook- {
   
   &wrapper {
+    position: relative;
+
     &.is-active {
       overflow: hidden;
     }
@@ -13,9 +15,7 @@
   &nav-arrow {
     background-color: #fff;
     cursor: pointer;
-    font-size: 2rem;
     height: 6.5%;
-    position: absolute;
     position: absolute;
     top: 50%;
     width: 2%; 
@@ -50,7 +50,7 @@
 
   &pagination {
     background-color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     position: absolute;
     right: 0%;
     width: 10%;

@@ -56,9 +56,9 @@ var BloomiesLookbook = function($lookbook, options) {
           el.removeClass('current-page');
         });
 
-        $cache.pages
-          .filter(function(el, index) {
-            return $(el).data('page-number') === pageNum;
+        $($cache.pages) // use jQuery's .filter method because IE8 Arrays don't have filter built in
+          .filter(function(index) {
+            return $(this).data('page-number') === pageNum;
           })[0]
           .addClass('current-page');
 
@@ -68,9 +68,9 @@ var BloomiesLookbook = function($lookbook, options) {
             val.removeClass('current-page');
           });
 
-          $cache.pagination
-            .filter(function(el, index) {
-              return $(el).data('for-page-number') === pageNum;
+          $($cache.pagination)
+            .filter(function(index) {
+              return $(this).data('for-page-number') === pageNum;
             })[0]
             .addClass('current-page');
         }
@@ -79,9 +79,9 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _getCurrentPage = function(){
-        return $cache.pages
-          .filter(function(el, index){
-            return $(el).hasClass('current-page');
+        return $($cache.pages)
+          .filter(function(index){
+            return $(this).hasClass('current-page');
           })[0];
       },
 
@@ -119,6 +119,11 @@ var BloomiesLookbook = function($lookbook, options) {
 
     activate: function(){
       var _this = this;
+
+      // first things first. if we're in IE8, just quit!
+      if ($('html.lt-ie9').length > 0) {
+        return;
+      }
 
       // cache the lookbook pieces first!
       _cacheLookBook();
