@@ -118,6 +118,12 @@
 	@@include('includes/footer.html')
 
 	<script>
+
+	var testLookBook1 = new BloomiesLookbook($('#tester1'), {
+															breakPoint: 640,
+															transitionStyle: 'fade'
+														});
+		testLookBook1.activate();
 	// bootleg initialization
 		$('.shop-heading').click(function(event) {
 			$('.shop-menu').toggleClass('is-active');
