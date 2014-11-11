@@ -24,7 +24,8 @@ var BloomiesLookbook = function($lookbook, options) {
           .children('.lookbook-pagination')
           .find('li')
           .each(function(index, el) {
-            $cache.pagination[index] = $(el); // add pagination items to pagination array
+            // add pagination items to pagination array
+            $cache.pagination[index] = $(el); 
           });
         $cache.nav = {
           nextBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-next'),
@@ -49,14 +50,17 @@ var BloomiesLookbook = function($lookbook, options) {
 
       _setCurrentPage = function(pageNum){
 
-        pageNum = pageNum === (undefined || -1) ?  1 : pageNum; // set 1 as the default
+        // set 1 as the default
+        pageNum = pageNum === (undefined || -1) ?  1 : pageNum; 
 
         // set current-page class on lookbook pages
         $.each($cache.pages, function(index, el) {
           el.removeClass('current-page');
         });
 
-        $($cache.pages) // use jQuery's .filter method because IE8 Arrays don't have filter built in
+        // use jQuery's .filter method because IE8 Arrays 
+        // don't have filter built in
+        $($cache.pages) 
           .filter(function(index) {
             return $(this).data('page-number') === pageNum;
           })[0]
@@ -223,7 +227,8 @@ var BloomiesLookbook = function($lookbook, options) {
                 window.setTimeout(resizeEnded, msToWait);
               } else {
                 timeout = false;
-                if ($(window).width() < options.breakPoint && _this.state.isActive) {
+                if ($(window).width() < options.breakPoint && 
+                    _this.state.isActive) {
                   _this.kill();
                 } else if ($(window).width() > options.breakPoint) {
                   _this.activate();
@@ -262,7 +267,9 @@ var BloomiesLookbook = function($lookbook, options) {
             $.each($cache.pages, function(index, val) {
                $(val).addClass('transition-fade');
             });
-            _this.state.transition = function(direction, destination) { _keepInBounds(direction, _transitionFade, destination); };
+            _this.state.transition = function(direction, destination) { 
+              _keepInBounds(direction, _transitionFade, destination); 
+            };
             break;
           case "skip":
             // stuff
@@ -270,8 +277,9 @@ var BloomiesLookbook = function($lookbook, options) {
             break;
           case "cards":
             // stuff
-            // $lookbook.find('.lookbook-page:not(.lookbook-page .lookbook-page)').css('opacity', 0);
-            _this.state.transition = function(direction, destination) { _keepInBounds(direction, _transitionCards, destination); };
+            _this.state.transition = function(direction, destination) { 
+              _keepInBounds(direction, _transitionCards, destination); 
+            };
             break;
           default:
             // slide is the default
