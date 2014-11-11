@@ -86,6 +86,21 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _keepInBounds = function(direction, transitionFunction, slideNumber) {
+        // check to see if slideNumber is greater than the length of the 
+        // lookbook or less than the first page in the lookbook
+        if (slideNumber > $cache.pages.length ||
+              slideNumber < options.startPage) { 
+          
+          if (direction === 'backward') {
+            slideNumber = options.startPage;
+          } else {
+            slideNumber = $cache.pages.length;
+          }
+
+        } 
+
+        // if slideNumber is out of bounds, go to the redefined slideNumber,
+        // else just go to wherever was sent in
         transitionFunction(direction, slideNumber);
       },
 
@@ -227,6 +242,13 @@ var BloomiesLookbook = function($lookbook, options) {
           });
         }
       }, // end setOptions.breakPoint
+
+      // startPage: defines the first slide in the lookbook
+      // input: int
+      // options: 1[default]...whatever 
+      startPage: function(){
+        options.startPage = options.startPage ? options.startPage : 1;
+      },
 
       // transitionStyle: defines the transition between slides
       // input: string
