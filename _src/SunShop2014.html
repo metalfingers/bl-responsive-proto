@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" ><![endif]-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	
+		Sun Shop with template
+	</title>
+
+	@@include('includes/meta.html')
+
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="./css/sunshop.css">
+
+</head>
+<body>
+
+	@@include('includes/header.html')
+
+	
+	<main role="main" class="l-site-content">
+
+		<!-- .lookbook-wrapper>.lookbook-nav-arrow.layout-vertical.go-to-prev+.lookbook-nav-arrow.layout-vertical.go-to-next+(.lookbook-page-wrapper>(.lookbook-page>img[src=http://lorempixel.com/1000/400/food/$])*3) -->
+
+		<div class="row">
+			<div class="sun-shop-lookbook lookbook-wrapper small-24 medium-6 large-6 column">
+				<img src="img/sunshop/sidebar.png" alt="">
+			</div>
+			<div id="sun-shop-lookbook" class="sun-shop-lookbook lookbook-wrapper small-24 medium-18 large-18 column">
+				<div class="lookbook-nav-arrow layout-horizontal go-to-prev hide-for-small-only"><img src="img/sunshop/nav-prev.png"></div>
+				<div class="lookbook-nav-arrow layout-horizontal go-to-next hide-for-small-only"><img src="img/sunshop/nav-next.png"></div>
+				<ol class="lookbook-pagination hide-for-small-only">
+					<li data-for-page-number="1" class="lookbook-title current-page">The Sun Shop</li>
+					<li data-for-page-number="2">Designers</li>
+					<li data-for-page-number="3">Styles</li>
+					<li data-for-page-number="4">Current Trend: Round</li>
+				</ol>
+
+				<div class="lookbook-page-wrapper">
+					<div class="lookbook-page" data-page-number="1">
+						<img src="img/sunshop/page00.jpg">
+					</div>
+					<div class="lookbook-page" data-page-number="2">
+						<img src="img/sunshop/page01.jpg">
+						<div class="sunglass-designer designer-valentino"></div>
+						<div class="sunglass-designer designer-dior"></div>
+						<div class="sunglass-designer designer-dolce"></div>
+						<div class="sunglass-designer designer-gucci"></div>
+						<div class="sunglass-designer designer-ray-ban"></div>
+						<div class="sunglass-designer designer-tom-ford"></div>
+					</div>
+					<div class="lookbook-page" data-page-number="3">
+						<img src="img/sunshop/page02.jpg">
+						<div class="sunglass-style style-oversized"></div>
+						<div class="sunglass-style style-polarized"></div>
+						<div class="sunglass-style style-wayfarer"></div>
+						<div class="sunglass-style style-shield"></div>
+						<div class="sunglass-style style-aviator"></div>
+						<div class="sunglass-style style-cat-eye"></div>
+					</div>
+					<div class="lookbook-page" data-page-number="4">
+						<img src="img/sunshop/page03.png">
+						<div class="curve-appeal animation-pulse"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+	</main>
+	
+	@@include('includes/footer.html')
+
+	<script>
+
+	var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
+															breakPoint: 640,
+															transitionStyle: 'fade',
+															startPage: 2,
+															// introPage: 1
+														});
+		sunshopLookbook.activate();
+	</script>
+
+</body>
+</html>

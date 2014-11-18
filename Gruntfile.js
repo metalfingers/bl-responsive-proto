@@ -206,7 +206,8 @@ module.exports = function(grunt){
           sourcemap: 'auto'
         },
         files: {
-          '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main.scss'
+          '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main.scss',
+          '<%= build.css.dest %>/sunshop.css' : '<%= build.css.src %>/sunshop.scss'
         }
       },
       prod: {
@@ -216,7 +217,8 @@ module.exports = function(grunt){
           sourcemap: 'none'
         },
         files: {
-          '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main.scss'
+          '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main.scss',
+          '<%= build.css.dest %>/sunshop.css' : '<%= build.css.src %>/sunshop.scss'
         }
       }
     },

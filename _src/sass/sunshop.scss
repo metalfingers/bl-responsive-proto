@@ -1,0 +1,230 @@
+.lookbook-wrapper {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.sun-shop-lookbook {
+
+  .lookbook-nav-arrow {
+    background-color: transparent;
+    width: 3%;
+
+    &.go-to-next {
+      left: 95.15%;
+    } 
+
+    &.go-to-prev {
+      left: 2%;
+    }
+  }
+
+  .lookbook-pagination {
+    background-color: rgba(255, 255, 255, .75);
+    float: left;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    position: absolute;
+    text-align: right;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 20;
+
+    li {
+      display: inline-block;
+      float: none;
+      margin-right: 0;
+      padding: 7px 14px;
+
+      &.lookbook-title {
+        float: left;
+      }
+    }
+
+  }
+  
+
+  .shop-menu {
+    background-color: white;
+    cursor: pointer;
+    height: 1.5rem;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    width: 145px;
+    z-index: 20;
+
+    &.is-active {
+      height: auto;
+
+      span {
+        background-image: url('../img/test1/close.png');
+      }
+    }
+  }
+
+  .shop-heading {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+
+    span {
+      background-image: url('../img/test1/hamburger.png');
+      height: 14px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 14px;
+    }
+  }
+
+  .lookbook-page {
+
+    &[data-page-number="1"] {}
+
+    &[data-page-number="2"] {
+
+      .sunglass-designer {
+        position: absolute;
+      }
+
+      .designer-valentino {
+        background-image: url('../img/sunshop/valentino.png');
+        height: 161px;
+        right: 480px;
+        top: 40px;
+        width: 209px;
+      }
+
+      .designer-dior {
+        background-image: url('../img/sunshop/dior.png');
+        height: 161px;
+        right: 251px;
+        top: 43px;
+        width: 212px;
+      }
+
+      .designer-dolce {
+        background-image: url('../img/sunshop/dolce.png');
+        height: 161px;
+        right: 23px;
+        top: 40px;
+        width: 220px;
+      }
+
+      .designer-gucci {
+        background-image: url('../img/sunshop/gucci.png');
+        height: 191px;
+        right: 480px;
+        top: 242px;
+        width: 209px;
+      }
+
+      .designer-ray-ban {
+        background-image: url('../img/sunshop/rayban.png');
+        height: 190px;
+        right: 251px;
+        top: 242px;
+        width: 212px;
+      }
+
+      .designer-tom-ford {
+        background-image: url('../img/sunshop/tomford.png');
+        height: 193px;
+        right: 23px;
+        top: 242px;
+        width: 220px;
+      }
+
+    }
+
+    &[data-page-number="3"] {
+
+      .sunglass-style {
+        cursor: pointer;
+        position: absolute;
+        -webkit-transform: rotate(-40deg);
+        transform: rotate(-40deg);
+        -webkit-transition: -webkit-transform .1s ease-out;
+        transition: transform .1s ease-out;
+
+        &:hover {
+          -webkit-transform: scale(1.05) rotate(-35deg);
+          transform: scale(1.05) rotate(-35deg);
+        }
+      }
+
+      .style-oversized {
+        background-image: url('../img/sunshop/oversized.png');
+        height: 130px;
+        right: 470px;
+        top: 64px;
+        width: 219px;
+      }
+
+      .style-polarized {
+        background-image: url('../img/sunshop/polarized.png');
+        height: 130px;
+        right: 319px;
+        top: 111px;
+        width: 219px;
+      }
+      
+      .style-wayfarer {
+        background-image: url('../img/sunshop/wayfarer.png');
+        height: 124px;
+        right: 483px;
+        top: 253px;
+        width: 231px;
+      }
+      
+      .style-shield {
+        background-image: url('../img/sunshop/shield.png');
+        height: 123px;
+        right: 176px;
+        top: 251px;
+        width: 225px;
+      }
+      
+      .style-aviator {
+        background-image: url('../img/sunshop/aviator.png');
+        height: 130px;
+        right: -9px;
+        top: 96px;
+        width: 229px;
+      }
+      
+      .style-cat-eye {
+        background-image: url('../img/sunshop/cat-eye.png');
+        height: 119px;
+        right: 11px;
+        top: 293px;
+        width: 230px;
+      }
+
+    }
+
+    &[data-page-number="4"] {
+
+      .curve-appeal {
+        background-image: url('../img/sunshop/page03_badge.png');
+        cursor: pointer;
+        height: 315px;
+        position: absolute;
+        right: 69px;
+        top: 80px;
+        -webkit-transition: -webkit-transform .2s ease-out;
+        transition: transform .2s ease-out;
+        width: 314px;
+
+        &:hover {
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+        }
+
+      }
+
+    }
+
+  }
+
+}

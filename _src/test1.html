@@ -31,6 +31,7 @@
 					<li data-for-page-number="2">2</li>
 					<li data-for-page-number="3">3</li>
 					<li data-for-page-number="4">4</li>
+					<li data-for-page-number="5">5</li>
 				</ol>
 				<div class="shop-menu hide-for-small-only">
 					<div class="shop-heading">shop all moncler<span></span></div>
@@ -69,11 +70,14 @@
 
 				<div class="lookbook-page-wrapper">
 					<div class="lookbook-page" data-page-number="1">
+						<div class="page-caption lorem1">THIS IS THE INTRO PAGE.</div>
+					</div>
+					<div class="lookbook-page" data-page-number="2">
 						<img src="img/test1/images/pg1.jpg" alt="">
 						<div class="page-caption lorem1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
 						<div class="page-caption lorem2">Tempora quo possimus impedit sit. Odit ut porro, at dolor!</div>
 					</div>
-					<div class="lookbook-page" data-page-number="2">
+					<div class="lookbook-page" data-page-number="3">
 						<div class="row">
 							<div class="small-24 medium-12 large-12 column">	
 								<img src="img/test1/images/pg2-1.jpg" alt="">
@@ -85,12 +89,12 @@
 							</div>
 						</div>
 					</div>
-					<div class="lookbook-page" data-page-number="3">
+					<div class="lookbook-page" data-page-number="4">
 						<img src="img/test1/images/pg3.jpg" alt="">
 						<div class="page-caption lorem1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
 						<div class="page-caption lorem2">Tempora quo possimus impedit sit. Odit ut porro, at dolor!</div>
 					</div>
-					<div class="lookbook-page" data-page-number="4">
+					<div class="lookbook-page" data-page-number="5">
 						<div class="row">
 							<div class="small-24 medium-12 large-12 column">	
 								<img src="img/test1/images/pg4-1.jpg" alt="">
@@ -122,7 +126,9 @@
 
 	var testLookBook1 = new BloomiesLookbook($('#tester1'), {
 															breakPoint: 640,
-															transitionStyle: 'fade'
+															transitionStyle: 'fade',
+															startPage: 2,
+															introPage: 1
 														});
 		testLookBook1.activate();
 	// bootleg initialization

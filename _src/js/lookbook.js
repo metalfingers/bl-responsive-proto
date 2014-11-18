@@ -89,17 +89,24 @@ var BloomiesLookbook = function($lookbook, options) {
           })[0];
       },
 
+      // _keepInBounds: ensures that we don't navigate to a slide that's not in
+      //                the realm of possibilty (a number less than 0 or greater
+      //                than the length of the lookbook)
+      // args:          direction (int) ['forward', 'backward', 'introPage']
       _keepInBounds = function(direction, transitionFunction, slideNumber) {
         // check to see if slideNumber is greater than the length of the 
         // lookbook or less than the first page in the lookbook
         if (slideNumber > $cache.pages.length ||
               slideNumber < options.startPage) { 
-          
-          if (direction === 'backward') {
+        
+          // if direction is "introPage" go there and return
+          if (direction === 'introPage') {
+            slideNumber = options.introPage;
+          } else if (direction === 'backward') {
             slideNumber = options.startPage;
           } else {
             slideNumber = $cache.pages.length;
-          }
+          } 
 
         } 
 
@@ -139,6 +146,7 @@ var BloomiesLookbook = function($lookbook, options) {
     state: {
       isActive: false,
       optionsSet: false,
+      introPageDisplayed: false,
       transition: function(arg){ 
         _transitionSlide(arg); 
       }
@@ -190,7 +198,14 @@ var BloomiesLookbook = function($lookbook, options) {
       _this.setEventHandlers();
 
       _setCurrentPage(1);
-      _this.state.transition( 'forward', 1);
+
+      // If there's a introPage, go to it. Otherwise go to pg 1
+      if (options.introPage) {
+        _this.state.transition( 'forward', options.introPage);
+      } else {
+        _this.state.transition( 'forward', 1);  
+      }
+
       _this.state.isActive = true;
 
     },
@@ -253,6 +268,14 @@ var BloomiesLookbook = function($lookbook, options) {
       // options: 1[default]...whatever 
       startPage: function(){
         options.startPage = options.startPage ? options.startPage : 1;
+      },
+
+      // introPage: defines the lookbook's intro page. 
+      //            This will only be shown once, so make it count!
+      // input: int
+      // options: 1...whatever (no default)
+      introPage: function(){
+        // placeholder...
       },
 
       // transitionStyle: defines the transition between slides
