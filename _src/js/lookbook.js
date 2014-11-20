@@ -146,6 +146,7 @@ var BloomiesLookbook = function($lookbook, options) {
       isActive: false,
       optionsSet: false,
       introPageDisplayed: false,
+      nameSpace: null,
       transition: function(arg){ 
         _transitionSlide(arg); 
       }
@@ -158,6 +159,9 @@ var BloomiesLookbook = function($lookbook, options) {
       if ($('html.lt-ie9').length > 0) {
         return;
       }
+
+      // second thing second. namespace the thing!
+      _this.state.nameSpace = 'lookBook' + Date.now();
 
       // cache the lookbook pieces first!
       _cacheLookBook();
@@ -293,7 +297,9 @@ var BloomiesLookbook = function($lookbook, options) {
                $(val).addClass('transition-fade');
             });
             _this.state.transition = function(direction, destination) { 
+              $(window).trigger('pageChangeStart.' + _this.state.nameSpace);
               _keepInBounds(direction, _transitionFade, destination); 
+              $(window).trigger('pageChangeEnd.' + _this.state.nameSpace); 
             };
             break;
           case "skip":
@@ -303,7 +309,9 @@ var BloomiesLookbook = function($lookbook, options) {
           case "cards":
             // stuff
             _this.state.transition = function(direction, destination) { 
+              $(window).trigger('pageChangeStart.' + _this.state.nameSpace);
               _keepInBounds(direction, _transitionCards, destination); 
+              $(window).trigger('pageChangeEnd.' + _this.state.nameSpace); 
             };
             break;
           default:
