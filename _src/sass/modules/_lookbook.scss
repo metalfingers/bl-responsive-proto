@@ -1,5 +1,4 @@
 .lookbook- {
-
  
   &wrapper {
     position: relative;
@@ -107,19 +106,6 @@
 
   &page {
     float: left;
-
-    &.transition-fade {
-      opacity: 0;
-      transition: opacity .5s ease;
-
-      .is-deactivated & {
-        opacity: 1;
-      }
-    }
-
-    &.transition-fade-in {
-      opacity: 1;
-    }
 
     &.current-page {
       z-index: 10;

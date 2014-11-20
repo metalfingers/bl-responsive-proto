@@ -1,0 +1,46 @@
+.lookbook-page {
+
+  &.transition-fade {
+    opacity: 0;
+    transition: opacity .5s ease;
+
+    .is-deactivated & {
+      opacity: 1;
+    }
+  }
+
+  &.transition-fade-in {
+    opacity: 1;
+  }
+
+  &.transition-card {
+    right: 100%;
+    transition: right .5s ease-in;
+
+    &.is-deactivated {
+      right: 0%;
+    }
+  }
+
+  &.transition-card-in {
+    right: 0%;
+  }
+
+  &.transition-card-out {
+    right: -5%;
+    z-index: 9;
+  }
+
+  &.transition-slide {
+    right: 100%;
+    transition: right .5s ease-in;
+  }
+
+  &.transition-slide-in {
+    right: 0%;
+  }
+
+  &.transition-slide-out {
+    right: -100%;
+  }
+}
