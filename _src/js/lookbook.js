@@ -175,8 +175,10 @@ var BloomiesLookbook = function($lookbook, options) {
       }
 
       // we always need to run through the options but we don't always need to
-      // activate the lookbook. If we're past the breakpoint, return
+      // activate the lookbook. If we're past the breakpoint, kill it so that
+      // we can add the correct utility classes and state values
       if ($(window).width() < options.breakPoint) {
+        _this.kill();
         return;
       }
 
@@ -214,6 +216,7 @@ var BloomiesLookbook = function($lookbook, options) {
 
       $lookbook
         .removeClass('is-active')
+        .addClass('is-deactivated')
         .css('height', '');
 
       $lookbook.find('.lookbook-page')
