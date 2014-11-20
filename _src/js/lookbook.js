@@ -304,6 +304,19 @@ var BloomiesLookbook = function($lookbook, options) {
         // placeholder...
       },
 
+      // transitionDirection: define the direction of the page transition
+      // input: string
+      // options: 'horizontal' [default], 'vertical'
+      transitionDirection: function(){
+        if (options.transitionDirection !== undefined) {
+          $cache.lookbook
+            .addClass('transition-direction-' + options.transitionDirection);
+        } else {
+           $cache.lookbook
+            .addClass('transition-direction-horizontal');
+        }
+      },
+
       // transitionStyle: defines the transition between slides
       // input: string
       // options: "slide" [default], "fade", "skip", "cards"
