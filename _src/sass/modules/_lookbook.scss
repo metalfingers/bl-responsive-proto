@@ -1,5 +1,6 @@
 .lookbook- {
-  
+
+ 
   &wrapper {
     position: relative;
 
@@ -12,20 +13,48 @@
     }
   }
 
+  &caret {
+    background-image: url('../img/nav-current-page.png');
+    height: 14px;
+    position: absolute;
+    top: 30px;
+    -webkit-transition: left .5s ease-out;
+    transition: left .5s ease-out;
+    width: 29px;
+    z-index: 20;
+  }
+
+  .lookbook-nav-arrow {
+    background-color: transparent;
+    width: 3%;
+
+    &.go-to-next {
+      left: 95.15%;
+    } 
+
+    &.go-to-prev {
+      left: 2%;
+    }
+  }
+
+
   &nav-arrow {
-    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100%;
     cursor: pointer;
-    height: 6.5%;
+    height: 8.5%;
     position: absolute;
     top: 50%;
     width: 2%; 
     z-index: 20;
 
     &.go-to-prev {
+      background-image: url('../img/nav-prev.png');
       left: 0%;
     }
 
     &.go-to-next {
+      background-image: url('../img/nav-next.png');
       left: 98%;
     }
 
@@ -37,10 +66,12 @@
       }
       
       &.go-to-prev {
+        background-image: url('../img/nav-up.png');
         top: 0%;
       }
 
       &.go-to-next {
+        background-image: url('../img/nav-down.png');
         top: 98%;
       }
 
@@ -49,17 +80,23 @@
   }
 
   &pagination {
-    background-color: #fff;
-    font-size: 1.5em;
+    background-color: rgba(255, 255, 255, .75);
+    float: left;
+    font-size: 1rem;
+    height: 30px;
+    margin-bottom: 10px;
     position: absolute;
-    right: 0%;
-    width: 10%;
-    z-index: 10;
+    text-align: right;
+    text-transform: uppercase;
+    width: 100%;
+    z-index: 20;
 
-    li {
+    *[data-for-page-number] {
       cursor: pointer;
-      float: left;
-      margin-right: 10%;
+      display: inline-block;
+      float: none;
+      margin-right: 0;
+      padding: 7px 14px;
     }
   }
 
@@ -74,6 +111,10 @@
     &.transition-fade {
       opacity: 0;
       transition: opacity .5s ease;
+
+      .is-deactivated & {
+        opacity: 1;
+      }
     }
 
     &.transition-fade-in {
