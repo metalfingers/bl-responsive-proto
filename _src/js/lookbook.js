@@ -240,7 +240,6 @@ var BloomiesLookbook = function($lookbook, options) {
       // type: string
       // opts: 'horizontal' [default], 'vertical'
       arrowPosition: function(){
-        var _this = this;
         if (options.arrowPosition === 'vertical') {
           $cache.lookbook
             .find('.lookbook-nav-arrow')
@@ -252,7 +251,6 @@ var BloomiesLookbook = function($lookbook, options) {
             .removeClass('layout-vertical')
             .addClass('layout-horizontal');
         }
-
       },
 
       // breakPoint: defines the browser width where the lookbook switches 

@@ -30,7 +30,7 @@
 				<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
 				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
 				<ol class="lookbook-pagination hide-for-small-only">
-					<li data-for-page-number="1">1</li>
+					<li data-for-page-number="1" class="current-page">1</li>
 					<li data-for-page-number="2">2</li>
 					<li data-for-page-number="3">3</li>
 					<li data-for-page-number="4">4</li>
@@ -67,8 +67,8 @@
 	<script>
 
 		var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
-															breakPoint: 640,
 															arrowPosition: 'vertical',
+															breakPoint: 640,
 															transitionDirection: 'vertical',
 															transitionStyle: 'fade',
 															startPage: 1,

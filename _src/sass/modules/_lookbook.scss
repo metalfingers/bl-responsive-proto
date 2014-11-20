@@ -62,16 +62,17 @@
       &.go-to-prev,
       &.go-to-next {
         left: 50%;
+        width: 8%;
       }
       
       &.go-to-prev {
         background-image: url('../img/nav-up.png');
-        top: 0%;
+        top: 8%;
       }
 
       &.go-to-next {
         background-image: url('../img/nav-down.png');
-        top: 98%;
+        top: 94%;
       }
 
     }
