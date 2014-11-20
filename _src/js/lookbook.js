@@ -236,7 +236,27 @@ var BloomiesLookbook = function($lookbook, options) {
 
     setOptions: {
       
-      // breakPoint: defines the browser width where the lookbook switches from desktop to mobile layout
+      // arrowPosition: sets the position of the arrows
+      // type: string
+      // opts: 'horizontal' [default], 'vertical'
+      arrowPosition: function(){
+        var _this = this;
+        if (options.arrowPosition === 'vertical') {
+          $cache.lookbook
+            .find('.lookbook-nav-arrow')
+            .removeClass('layout-horizontal')
+            .addClass('layout-vertical');
+        } else if (options.arrowPosition === 'horizontal') {
+          $cache.lookbook
+            .find('.lookbook-nav-arrow')
+            .removeClass('layout-vertical')
+            .addClass('layout-horizontal');
+        }
+
+      },
+
+      // breakPoint: defines the browser width where the lookbook switches 
+      //              from desktop to mobile layout
       // type: int
       breakPoint: function(){
         var _this = this,
