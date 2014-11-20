@@ -35,10 +35,11 @@
 					<li data-for-page-number="3">Styles</li>
 					<li data-for-page-number="4">Current Trend: Round</li>
 				</ol>
+				<div class="lookbook-caret"></div>
 
 				<div class="lookbook-page-wrapper">
 					<div class="lookbook-page" data-page-number="1">
-						<img src="img/sunshop/page00.jpg">
+						<img src="img/sunshop/page00.jpg"  data-for-page-number="2">
 					</div>
 					<div class="lookbook-page" data-page-number="2">
 						<img src="img/sunshop/page01.jpg">
@@ -73,13 +74,25 @@
 
 	<script>
 
-	var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
+		var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
 															breakPoint: 640,
 															transitionStyle: 'fade',
-															startPage: 2,
+															startPage: 1,
 															// introPage: 1
 														});
+
 		sunshopLookbook.activate();
+
+		$(window).on('pageChangeEnd.' + sunshopLookbook.state.nameSpace, 
+			function(event) {
+        var currentPageItemOffset = Math.floor(
+	        	( $('.lookbook-pagination .current-page').offset().left - // item
+	        	$('#sun-shop-lookbook').offset().left ) + // container
+	        	( $('.lookbook-pagination .current-page').width() / 2 )
+        	);
+        $('.lookbook-caret').css({left: currentPageItemOffset});
+      });
+
 	</script>
 
 </body>

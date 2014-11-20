@@ -5,6 +5,17 @@
 
 .sun-shop-lookbook {
 
+  .lookbook-caret {
+    background-image: url('../img/sunshop/nav-current-page.png');
+    height: 14px;
+    position: absolute;
+    top: 30px;
+    -webkit-transition: left .5s ease-out;
+    transition: left .5s ease-out;
+    width: 29px;
+    z-index: 20;
+  }
+
   .lookbook-nav-arrow {
     background-color: transparent;
     width: 3%;
@@ -22,6 +33,7 @@
     background-color: rgba(255, 255, 255, .75);
     float: left;
     font-size: 1rem;
+    height: 30px;
     margin-bottom: 10px;
     position: absolute;
     text-align: right;
@@ -84,7 +96,16 @@
     &[data-page-number="2"] {
 
       .sunglass-designer {
+        cursor: pointer;
         position: absolute;
+        -webkit-transition: -webkit-transform .1s ease-out;
+        transition: transform .1s ease-out;
+
+        &:hover {
+          -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+        }
+
       }
 
       .designer-valentino {
@@ -148,8 +169,8 @@
         transition: transform .1s ease-out;
 
         &:hover {
-          -webkit-transform: scale(1.05) rotate(-35deg);
-          transform: scale(1.05) rotate(-35deg);
+          -webkit-transform: scale(1.05) rotate(-40deg);
+          transform: scale(1.05) rotate(-40deg);
         }
       }
 
