@@ -19,10 +19,9 @@ var BloomiesLookbook = function($lookbook, options) {
           .each(function(index, el) {
             $cache.pages[index] = $(el); // add lookbook page to pages array
           });
-        $cache.pagination = [];
+        $cache.pagination = []; // this is a collection of "go-to-page" links all over the place
         $cache.lookbook
-          .children('.lookbook-pagination')
-          .find('li')
+          .find('*[data-for-page-number]')
           .each(function(index, el) {
             // add pagination items to pagination array
             $cache.pagination[index] = $(el); 
@@ -66,7 +65,7 @@ var BloomiesLookbook = function($lookbook, options) {
           })[0]
           .addClass('current-page');
 
-        // set current-page class on pagination items
+        // set current-page class on pagination items (wherever they are)
         if ($cache.pagination.length > 0) {
           $.each($cache.pagination, function(index, val) {
             val.removeClass('current-page');
