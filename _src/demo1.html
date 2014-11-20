@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" ><![endif]-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	
+		Sun Shop with template
+	</title>
+
+	@@include('includes/meta.html')
+
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" href="./css/sunshop.css"> -->
+
+</head>
+<body>
+
+	@@include('includes/header.html')
+
+	
+	<main role="main" class="l-site-content">
+
+		<!-- .lookbook-wrapper>.lookbook-nav-arrow.layout-vertical.go-to-prev+.lookbook-nav-arrow.layout-vertical.go-to-next+(.lookbook-page-wrapper>(.lookbook-page>img[src=http://lorempixel.com/1000/400/food/$])*3) -->
+
+		<div class="row">
+			<div class="sun-shop-lookbook lookbook-wrapper medium-6 large-6 column hide-for-small-only">
+				<img src="img/sunshop/sidebar.png" alt="">
+			</div>
+			<div id="sun-shop-lookbook" class="sun-shop-lookbook lookbook-wrapper small-24 medium-18 large-18 column">
+				<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
+				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
+				<ol class="lookbook-pagination hide-for-small-only">
+					<li data-for-page-number="1">1</li>
+					<li data-for-page-number="2">2</li>
+					<li data-for-page-number="3">3</li>
+					<li data-for-page-number="4">4</li>
+					<li data-for-page-number="5">5</li>
+				</ol>
+				<div class="lookbook-caret hide-for-small-only"></div>
+
+				<div class="lookbook-page-wrapper">
+					<div class="lookbook-page" data-page-number="1">
+						<img src="img/demo1/red-1.jpg">
+					</div>
+					<div class="lookbook-page" data-page-number="2">
+						<img src="img/demo1/red-2.jpg">
+					</div>
+					<div class="lookbook-page" data-page-number="3">
+						<img src="img/demo1/red-3.jpg">
+					</div>
+					<div class="lookbook-page" data-page-number="4">
+						<img src="img/demo1/red-4.jpg">
+					</div>
+					<div class="lookbook-page" data-page-number="5">
+						<img src="img/demo1/red-5.jpg">
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+	</main>
+	
+	@@include('includes/footer.html')
+
+	<script>
+
+		var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
+															breakPoint: 640,
+															transitionStyle: 'fade',
+															startPage: 1,
+															// introPage: 1
+														});
+
+		sunshopLookbook.activate();
+
+		$(window).on('pageChangeEnd.' + sunshopLookbook.state.nameSpace, 
+			function(event) {
+        var currentPageItemOffset = Math.floor(
+	        	( $('.lookbook-pagination .current-page').offset().left - // item
+	        	$('#sun-shop-lookbook').offset().left ) + // container
+	        	( $('.lookbook-pagination .current-page').width() / 2 )
+        	);
+        $('.lookbook-caret').css({left: currentPageItemOffset});
+      });
+
+	</script>
+
+</body>
+</html>
