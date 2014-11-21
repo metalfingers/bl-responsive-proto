@@ -93,6 +93,11 @@ var BloomiesLookbook = function($lookbook, options) {
       //                than the length of the lookbook)
       // args:          direction (int) ['forward', 'backward', 'introPage']
       _keepInBounds = function(direction, transitionFunction, slideNumber) {
+        // if we're going to where we already are, just return
+        if (_getCurrentPage().data('page-number') === slideNumber) {
+          return;
+        }
+
         // check to see if slideNumber is greater than the length of the 
         // lookbook or less than the first page in the lookbook
         if (slideNumber > $cache.pages.length ||
