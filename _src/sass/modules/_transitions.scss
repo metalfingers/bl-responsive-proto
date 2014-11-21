@@ -32,15 +32,9 @@
   }
 
   &.transition-slide {
-    right: 100%;
-    transition: right .5s ease-in;
+    display: inline-block;
+    float: left;
+    position: relative !important;
   }
 
-  &.transition-slide-in {
-    right: 0%;
-  }
-
-  &.transition-slide-out {
-    right: -100%;
-  }
 }

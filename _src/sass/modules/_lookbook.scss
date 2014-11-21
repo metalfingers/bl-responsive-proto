@@ -103,6 +103,10 @@
   &page-wrapper {
     clear: both;
     z-index: 1;
+
+    .slide-wrapper {
+      transition: transform .5s ease-out;
+    }
   }
 
   &page {

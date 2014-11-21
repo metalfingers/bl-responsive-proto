@@ -130,7 +130,20 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _transitionSlide = function(direction, toPage){
-        
+        var offset = 0;
+
+        // get the offset that we're going to be sliding to
+        $.each($cache.pages, function(index, val) {
+          if ($(val).data('page-number') < toPage) {
+            offset += $(val).width();
+          }
+        });
+
+        _setCurrentPage(toPage);
+        $('.slide-wrapper').css({
+          'transform': 'translateX(-' + offset + 'px)',
+          '-webkit-transform': 'translateX(-' + offset + 'px)'
+        });
       },
 
       _transitionCards = function(direction, toPage){
@@ -228,7 +241,7 @@ var BloomiesLookbook = function($lookbook, options) {
         .addClass('is-deactivated')
         .css('height', '');
 
-      $lookbook.find('.lookbook-page')
+      $lookbook.find('.lookbook-page, .slide-wrapper')
         .css({
           width: '',
           left: '',
@@ -351,8 +364,28 @@ var BloomiesLookbook = function($lookbook, options) {
             };
             break;
           default:
-            // slide is the default
-            _transitionSlide();
+            // 'slide' is the default
+            
+            // add a wrapper around the pages and make it wide enough to fit
+            // all pages
+            $('.lookbook-page-wrapper')
+              .wrapInner('<div class="slide-wrapper"></div>');
+            $('.slide-wrapper').css('width', function(){
+              var ret = 0;
+              $.each($cache.pages, function(index, val) {
+                ret += $(val).width();
+              });
+              return ret;
+            });
+
+            $.each($cache.pages, function(index, val) {
+               $(val).addClass('transition-slide');
+            });
+            _this.state.transition = function(direction, destination) { 
+              $(window).trigger('pageChangeStart.' + _this.state.nameSpace);
+              _keepInBounds(direction, _transitionSlide, destination); 
+              $(window).trigger('pageChangeEnd.' + _this.state.nameSpace); 
+            };
         }
       }
 
