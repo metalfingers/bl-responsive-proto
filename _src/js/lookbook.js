@@ -147,15 +147,19 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _transitionCards = function(direction, toPage){
-        
-        switch (direction) {
-          case "forward":
-            $cache.pagination[toPage].css('left', function(){
-              $(this).width();
-            })
-            .addClass('is-sliding')
-            .animate({'left': 0}, 500);
-        }
+        $.each($cache.pages, function(index, el) {
+          $(el).removeClass('transition-card-out');
+        });
+
+        _getCurrentPage()
+          .addClass('transition-card-out')
+          .removeClass('transition-card-in');
+        _setCurrentPage(toPage).addClass(function(){
+          return direction === 'backward' ? 
+            'transition-card-reverse transition-card-in' : 
+            'transition-card-in';
+        });
+
       };
 
 
@@ -335,7 +339,7 @@ var BloomiesLookbook = function($lookbook, options) {
 
       // transitionStyle: defines the transition between slides
       // input: string
-      // options: "slide" [default], "fade", "skip", "cards"
+      // options: "slide" [default], "fade", "skip", "cards", "pageScroll" 
       transitionStyle: function(){
         var _this = this;
 
@@ -357,6 +361,9 @@ var BloomiesLookbook = function($lookbook, options) {
             break;
           case "cards":
             // stuff
+            $.each($cache.pages, function(index, val) {
+               $(val).addClass('transition-card');
+            });
             _this.state.transition = function(direction, destination) { 
               $(window).trigger('pageChangeStart.' + _this.state.nameSpace);
               _keepInBounds(direction, _transitionCards, destination); 
@@ -409,7 +416,7 @@ var BloomiesLookbook = function($lookbook, options) {
        }); 
     },
 
-    goToNext: function(){
+    goToNext: function(direction, destination){
       var _this = this;
       _this.state.transition( 'forward', _getCurrentPage().data('page-number') + 1);
     },
