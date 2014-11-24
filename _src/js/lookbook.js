@@ -398,21 +398,74 @@ cl('going backward');
     },
 
     setEventHandlers: function(){
-      var _this = this;
+      var _this = this,
+          touching = false,
+          startingPosition = null;
 
-      $cache.nav.nextBtn.click(function(event) {
+      if (_this.state.handlersSet === true) {
+        return;
+      }
+
+      $cache.nav.nextBtn.on('click touchstart', function(event) {
         _this.goToNext();
       });
 
-      $cache.nav.prevBtn.click(function(event) {
+      $cache.nav.prevBtn.on('click touchstart', function(event) {
         _this.goToPrev();
       });
 
       $.each($cache.pagination, function(index, val) {
-          $(val).click(function(event) {
+          $(val).on('click touchstart', function(event) {
             _this.goToPage($(this).data('for-page-number'));
           });
-       }); 
+       });
+
+      // swiping
+      $cache.lookbook.on('touchstart', function(event) {
+        touching = true;
+        startingPosition = {
+          x: event.originalEvent.changedTouches[0].pageX,
+          y: event.originalEvent.changedTouches[0].pageY
+        };
+        return false;
+      });
+
+      $cache.lookbook.on('touchend', function(event) {
+        var touchThreshold = 80; // disregard moves within 80px of each other
+        touching = false;
+        // if we're in a horizontal orientation, check the x vals
+        if (_this.state.transitionDirection === 'horizontal') {
+          if (Math.abs( event.originalEvent.changedTouches[0].pageX - startingPosition.x ) > 
+            touchThreshold ) {
+            if (event.originalEvent.changedTouches[0].pageX > startingPosition.x) {
+              _this.goToPrev();
+            } else {
+              _this.goToNext();
+            }
+          } else {
+            //do nothing, we're not past the threshold
+          }
+        } else {
+          if (Math.abs( event.originalEvent.changedTouches[0].pageY - startingPosition.y ) > 
+            touchThreshold ) {
+            if (event.originalEvent.changedTouches[0].pageY > startingPosition.y) {
+              _this.goToPrev();
+            } else {
+              _this.goToNext();
+            }
+          } else {
+            //do nothing, we're not past the threshold
+          }          
+        }
+
+
+      });
+
+      $cache.lookbook.on('touchmove mousemove', function(event){
+        // might use this...
+      });
+
+      _this.state.handlersSet = true;
     },
 
     goToNext: function(direction, destination){
