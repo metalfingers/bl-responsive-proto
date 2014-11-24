@@ -102,6 +102,7 @@
 
   &page-wrapper {
     clear: both;
+    overflow: hidden;
     z-index: 1;
 
     .slide-wrapper {
@@ -120,6 +121,24 @@
       z-index: 25;
     }
     
+  }
+
+  &page-caption {
+    left: 45%;
+    position: absolute;
+    top: 50%;
+    width: 15%;
+
+    @media only screen and (max-width: 40.063em) {
+      background-color: #efefef;
+      bottom: 0;
+      font-size: 1.2em;
+      height: auto;
+      left: 0;
+      top: auto;
+      width: 100%;
+    }
+
   }
 
 }
