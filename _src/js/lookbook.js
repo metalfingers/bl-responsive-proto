@@ -186,8 +186,10 @@ cl('going backward');
         _this.state.nameSpace = 'lookBook' + Date.now();
       }
 
-      // cache the lookbook pieces first!
-      _cacheLookBook();
+      // cache the lookbook pieces first! (if they haven't already been cached)
+      if ($.isEmptyObject($cache)) {
+        _cacheLookBook();
+      }
 
       // run through the options at least once
       if (!_this.state.optionsSet) {
