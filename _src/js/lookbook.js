@@ -147,15 +147,15 @@ var BloomiesLookbook = function($lookbook, options) {
       },
 
       _transitionStack = function(direction, toPage){
-        // $.each($cache.pages, function(i, val){
-        //   $(val).removeClass('transition-stack-below transition-stack-above');
-        // });
         if (_getCurrentPage().data('page-number') <= toPage) {
 cl('going forward');
-          // _getCurrentPage().addClass('transition-stack-below');
+          // note!!! step through each slide between current and destination
+          // add the transition-stack-above class
           _setCurrentPage(toPage).addClass('transition-stack-above');
         } else {
 cl('going backward');
+          // note!!! step through each slide between current and destination
+          // remove the transition-stack-above class
           _getCurrentPage().removeClass('transition-stack-above');
           _setCurrentPage(toPage);
         }
