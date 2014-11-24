@@ -146,20 +146,19 @@ var BloomiesLookbook = function($lookbook, options) {
         });
       },
 
-      _transitionCards = function(direction, toPage){
-        $.each($cache.pages, function(index, el) {
-          $(el).removeClass('transition-card-out');
-        });
-
-        _getCurrentPage()
-          .addClass('transition-card-out')
-          .removeClass('transition-card-in');
-        _setCurrentPage(toPage).addClass(function(){
-          return direction === 'backward' ? 
-            'transition-card-reverse transition-card-in' : 
-            'transition-card-in';
-        });
-
+      _transitionStack = function(direction, toPage){
+        // $.each($cache.pages, function(i, val){
+        //   $(val).removeClass('transition-stack-below transition-stack-above');
+        // });
+        if (_getCurrentPage().data('page-number') <= toPage) {
+cl('going forward');
+          // _getCurrentPage().addClass('transition-stack-below');
+          _setCurrentPage(toPage).addClass('transition-stack-above');
+        } else {
+cl('going backward');
+          _getCurrentPage().removeClass('transition-stack-above');
+          _setCurrentPage(toPage);
+        }
       };
 
 
@@ -339,7 +338,7 @@ var BloomiesLookbook = function($lookbook, options) {
 
       // transitionStyle: defines the transition between slides
       // input: string
-      // options: "slide" [default], "fade", "skip", "cards", "pageScroll" 
+      // options: "slide" [default], "fade", "skip", "stack", "pageScroll" 
       transitionStyle: function(){
         var _this = this;
 
@@ -359,14 +358,14 @@ var BloomiesLookbook = function($lookbook, options) {
             // stuff
             _transitionSkip();
             break;
-          case "cards":
+          case "stack":
             // stuff
             $.each($cache.pages, function(index, val) {
-               $(val).addClass('transition-card');
+               $(val).addClass('transition-stack');
             });
             _this.state.transition = function(direction, destination) { 
               $(window).trigger('pageChangeStart.' + _this.state.nameSpace);
-              _keepInBounds(direction, _transitionCards, destination); 
+              _keepInBounds(direction, _transitionStack, destination); 
               $(window).trigger('pageChangeEnd.' + _this.state.nameSpace); 
             };
             break;

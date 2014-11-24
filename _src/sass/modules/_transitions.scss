@@ -13,22 +13,28 @@
     opacity: 1;
   }
 
-  &.transition-card {
-    right: 100%;
+  &.transition-stack {
+    box-shadow: 4px 4px 10px black;
+    right: 120%;
     transition: right .5s ease-in;
+    z-index: 11;
+
+    &:first-child {
+      right: 0%;
+    }
 
     &.is-deactivated {
       right: 0%;
     }
+
+    &.current-page {
+      z-index: 11;
+    }
   }
 
-  &.transition-card-in {
+  &.transition-stack-above {
     right: 0%;
-  }
-
-  &.transition-card-out {
-    right: -5%;
-    z-index: 9;
+    z-index: 11;
   }
 
   &.transition-slide {
