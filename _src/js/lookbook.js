@@ -231,9 +231,9 @@ cl('going backward');
 
       // If there's a introPage, go to it. Otherwise go to pg 1
       if (options.introPage) {
-        _this.state.transition( 'forward', options.introPage);
+        _this.goToPage(options.introPage);
       } else {
-        _this.state.transition( 'forward', 1);  
+        _this.goToPage(1);
       }
 
       _this.state.isActive = true;
