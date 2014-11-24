@@ -30,6 +30,7 @@ var BloomiesLookbook = function($lookbook, options) {
           nextBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-next'),
           prevBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-prev')
         };
+
       },
 
       _slideDimensions = function(){
@@ -138,7 +139,6 @@ var BloomiesLookbook = function($lookbook, options) {
             offset += $(val).width();
           }
         });
-
         _setCurrentPage(toPage);
         $('.slide-wrapper').css({
           'transform': 'translateX(-' + offset + 'px)',
