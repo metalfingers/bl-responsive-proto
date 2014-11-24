@@ -181,8 +181,10 @@ cl('going backward');
         return;
       }
 
-      // second thing second. namespace the thing!
-      _this.state.nameSpace = 'lookBook' + Date.now();
+      // second thing second. namespace the thing (unless it already has one)!
+      if (_this.state.nameSpace === null) {
+        _this.state.nameSpace = 'lookBook' + Date.now();
+      }
 
       // cache the lookbook pieces first!
       _cacheLookBook();
