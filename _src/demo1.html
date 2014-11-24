@@ -72,10 +72,10 @@
 	<script>
 
 		var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
-															arrowPosition: 'vertical',
-															breakPoint: 640,
-															transitionDirection: 'vertical',
-															transitionStyle: 'cards',
+															arrowPosition: 'horizontal',
+															breakPoint: 0,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'stack',
 															startPage: 1,
 															// introPage: 1
 														});
@@ -90,7 +90,13 @@
 	        	( $('.lookbook-pagination .current-page').width() / 2 )
         	);
         $('.lookbook-caret').css({left: currentPageItemOffset});
-      });
+      }
+     );
+
+		// hack!!! we're missing the ablove pagechange event so we're 
+		// going to call the goToPage method on the lookbook to make
+		// sure that the lookbook caret is the right place
+		sunshopLookbook.goToPage(1);
 
 	</script>
 

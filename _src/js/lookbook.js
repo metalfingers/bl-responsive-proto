@@ -331,9 +331,11 @@ cl('going backward');
       // input: string
       // options: 'horizontal' [default], 'vertical'
       transitionDirection: function(){
+        var _this = this;
         if (options.transitionDirection !== undefined) {
           $cache.lookbook
             .addClass('transition-direction-' + options.transitionDirection);
+          _this.state.transitionDirection = options.transitionDirection;
         } else {
            $cache.lookbook
             .addClass('transition-direction-horizontal');
@@ -385,7 +387,7 @@ cl('going backward');
               $.each($cache.pages, function(index, val) {
                 ret += $(val).width();
               });
-              return ret;
+              return ret * 2 ; //return double for some padding
             });
 
             $.each($cache.pages, function(index, val) {
