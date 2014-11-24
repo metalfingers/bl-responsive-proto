@@ -165,12 +165,14 @@ cl('going backward');
   return {
     state: {
       isActive: false,
+      handlersSet: false,
       optionsSet: false,
       introPageDisplayed: false,
       nameSpace: null,
       transition: function(arg){ 
         _transitionSlide(arg); 
-      }
+      },
+      transitionDirection: 'horizontal'
     },
 
     activate: function(){
@@ -193,9 +195,7 @@ cl('going backward');
 
       // run through the options at least once
       if (!_this.state.optionsSet) {
-        // loop through all options and run them...may be a better idea to 
-        // match option names and setOption methods and just run the ones that
-        // exist in the options object.
+        // loop through all options and run them...
         for (var opt in _this.setOptions) {
           _this.setOptions[opt].apply(_this);
         }
