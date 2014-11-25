@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" ><![endif]-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	
+		Demo 1
+	</title>
+
+	@@include('includes/meta.html')
+
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" href="./css/sunshop.css"> -->
+	<style>
+		.lookbook-page > img {
+			width: 960px;
+		}
+		.back-to-top {
+			bottom: 10%;
+			font-size: 25px;
+			position: fixed;
+			right: 14%;
+			border: 1px solid #000;
+			padding: 3px 15px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+	@@include('includes/header.html')
+
+	
+	<main role="main" class="l-site-content">
+
+		<!-- .lookbook-wrapper>.lookbook-nav-arrow.layout-vertical.go-to-prev+.lookbook-nav-arrow.layout-vertical.go-to-next+(.lookbook-page-wrapper>(.lookbook-page>img[src=http://lorempixel.com/1000/400/food/$])*3) -->
+
+		<div class="row">
+			<div class="back-to-top">&#8607;</div>
+			<div id="sun-shop-lookbook" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+<!-- 				<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
+				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div> -->
+				<ol class="lookbook-pagination hide-for-small-only">
+					<li data-for-page-number="1" class="current-page">section 1</li>
+					<li data-for-page-number="2">section 2</li>
+					<li data-for-page-number="3">section 3</li>
+					<li data-for-page-number="4">section 4</li>
+					<li data-for-page-number="5">section 5</li>
+				</ol>
+				<!-- <div class="lookbook-caret hide-for-small-only"></div> -->
+
+				<div class="lookbook-page-wrapper">
+					<div class="lookbook-page" data-page-number="1">
+						<img src="img/demo1/page1.jpg">
+						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta esse magni omnis.</div>
+					</div>
+					<div class="lookbook-page" data-page-number="2">
+						<img src="img/demo1/page2.jpg">
+						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, odio! Ducimus, itaque.</div>
+					</div>
+					<div class="row lookbook-page" data-page-number="3">
+						<div id="demo2" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+							<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
+							<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
+							<div class="lookbook-page-wrapper">
+								<div class="lookbook-page" data-page-number="1">
+									<img src="img/demo1/vid/page1.jpg">
+									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta esse magni omnis.</div>
+								</div>
+								<div class="lookbook-page" data-page-number="2">
+									<video src='img/demo1/Miss_Favela_802x566.mp4' autoplay="true" loop="true" muted="true">
+										<!-- <source src='img/demo1/Miss_Favela_802x566.mp4' type='video/mp4'/>
+										<source src='img/demo1/Miss_Favela_802x566.webmhd.webm' type='video/webm'/> -->
+									</video>
+								</div>
+								<div class="lookbook-page" data-page-number="3">
+									<img src="img/demo1/vid/page3.jpg">
+									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste cum dolorem neque!</div>
+								</div>
+								<div class="lookbook-page" data-page-number="4">
+									<img src="img/demo1/vid/page4.jpg">
+									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum praesentium natus consequuntur.</div>
+								</div>
+								<div class="lookbook-page" data-page-number="5">
+									<img src="img/demo1/vid/page5.jpg">
+									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur labore quasi, vitae?</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="lookbook-page" data-page-number="4">
+						<img src="img/demo1/page4.jpg">
+						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum praesentium natus consequuntur.</div>
+					</div>
+					<div class="lookbook-page" data-page-number="5">
+						<img src="img/demo1/page5.jpg">
+						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur labore quasi, vitae?</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+	</main>
+	
+	@@include('includes/footer.html')
+
+	<script>
+
+		var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
+															arrowPosition: 'horizontal',
+															breakPoint: 0,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'pageScroll',
+															startPage: 1,
+															stickyNav: true,
+															// introPage: 1
+														});
+
+		sunshopLookbook.activate();
+
+		$(window).on('pageChangeEnd.' + sunshopLookbook.state.nameSpace, 
+			function(event) {
+        var currentPageItemOffset = Math.floor(
+	        	( $('.lookbook-pagination .current-page').offset().left - // item
+	        	$('#sun-shop-lookbook').offset().left ) + // container
+	        	( $('.lookbook-pagination .current-page').width() / 2 )
+        	);
+        $('.lookbook-caret').css({left: currentPageItemOffset});
+      }
+     );
+
+		// hack!!! we're missing the ablove pagechange event so we're 
+		// going to call the goToPage method on the lookbook to make
+		// sure that the lookbook caret is the right place
+		sunshopLookbook.goToPage(1);
+
+		// hack! waypoint not firing inside of lookbook
+		$('.lookbook-pagination')
+			.width(962)
+			.waypoint('sticky', { stuckClass: 'lookbook-sticky' });
+
+
+
+		var demo2 = new BloomiesLookbook($('#demo2'), {
+												arrowPosition: 'horizontal',
+												breakPoint: 0,
+												transitionDirection: 'horizontal',
+												transitionStyle: 'stack',
+												startPage: 1,
+												stickyNav: false,
+												// introPage: 1
+											});
+		demo2.activate();
+
+		$('.back-to-top').click(function(event) {
+			$('html, body').animate({scrollTop: 0}, 1000);
+		});
+	</script>
+
+</body>
+</html>
