@@ -174,15 +174,17 @@ var BloomiesLookbook = function($lookbook, options) {
 
   return {
     state: {
-      isActive: false,
+      cache: $cache,
       handlersSet: false,
-      optionsSet: false,
       introPageDisplayed: false,
+      isActive: false,
       nameSpace: null,
+      optionsSet: false,
       transition: function(arg){ 
         _transitionSlide(arg); 
       },
-      transitionDirection: 'horizontal'
+      transitionDirection: 'horizontal',
+      transitionStyle: 'slide'
     },
 
     activate: function(){
@@ -372,6 +374,10 @@ var BloomiesLookbook = function($lookbook, options) {
       // options: "slide" [default], "fade", "skip", "stack", "pageScroll" 
       transitionStyle: function(){
         var _this = this;
+
+        if (options.transitionStyle !== undefined) {
+          _this.state.transitionStyle = options.transitionStyle;
+        }
 
         switch (options.transitionStyle) {
           case "fade":
