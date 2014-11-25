@@ -319,6 +319,21 @@ cl('going backward');
         options.startPage = options.startPage ? options.startPage : 1;
       },
 
+      // stickyNav: ...adds a sticky class to the nav
+      // input: boolean / string
+      // options: boolean true or a jquery object or a class name 
+      stickyNav: function(){
+        if (typeof options.stickyNav === 'boolean') {
+          $cache.lookbook
+            .children('.lookbook-pagination')
+            .waypoint('sticky', { stuckClass: 'lookbook-sticky' });
+        } else if (options.stickyNav instanceof jQuery) {
+          options.stickyNav.waypoint('sticky', { stuckClass: 'lookbook-sticky' });
+        } else if (typeof options.stickyNav === 'string') {
+          $( options.stickyNav ).waypoint('sticky', { stuckClass: 'lookbook-sticky' });
+        }
+      },      
+
       // introPage: defines the lookbook's intro page. 
       //            This will only be shown once, so make it count!
       // input: int
