@@ -126,6 +126,15 @@ var BloomiesLookbook = function($lookbook, options) {
         _setCurrentPage(toPage).addClass('transition-fade-in');
       },
 
+      _transitionScroll = function(direction, toPage){
+        var $newPage = $($cache.pages) 
+                        .filter(function(index) {
+                          return $(this).data('page-number') === toPage;
+                        })[0];
+        $('body, html').animate({scrollTop: $newPage.offset().top}, 500);
+        _setCurrentPage(toPage);
+      },
+
       _transitionSkip = function(direction, toPage){
 
       },
@@ -375,10 +384,26 @@ cl('going backward');
               $(window).trigger('pageChangeEnd.' + _this.state.nameSpace); 
             };
             break;
+
+          case "pageScroll":
+            $.each($cache.pages, function(index, val) {
+               $(val).addClass('transition-page-scroll');
+            });
+            $cache.lookbook
+              .children('.lookbook-page-wrapper')
+              .addClass('page-scroll');
+            _this.state.transition = function(direction, destination) { 
+              $(window).trigger('pageChangeStart.' + _this.state.nameSpace);
+              _keepInBounds(direction, _transitionScroll, destination); 
+              $(window).trigger('pageChangeEnd.' + _this.state.nameSpace); 
+            };
+            break;
+
           case "skip":
             // stuff
             _transitionSkip();
             break;
+
           case "stack":
             // stuff
             $.each($cache.pages, function(index, val) {
@@ -390,6 +415,7 @@ cl('going backward');
               $(window).trigger('pageChangeEnd.' + _this.state.nameSpace); 
             };
             break;
+
           default:
             // 'slide' is the default
             
@@ -478,7 +504,6 @@ cl('going backward');
             //do nothing, we're not past the threshold
           }          
         }
-
 
       });
 

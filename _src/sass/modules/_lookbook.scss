@@ -105,6 +105,10 @@
     overflow: hidden;
     z-index: 1;
 
+    &.page-scroll {
+      height: auto !important;
+    }
+
     .slide-wrapper {
       transition: transform .5s ease-out;
     }
