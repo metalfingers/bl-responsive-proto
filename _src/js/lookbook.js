@@ -149,20 +149,21 @@ var BloomiesLookbook = function($lookbook, options) {
           }
         });
         _setCurrentPage(toPage);
-        $('.slide-wrapper').css({
-          'transform': 'translateX(-' + offset + 'px)',
-          '-webkit-transform': 'translateX(-' + offset + 'px)'
-        });
+        $cache.lookbook
+          .children('.lookbook-page-wrapper')
+          .children('.slide-wrapper')
+          .css({
+            'transform': 'translateX(-' + offset + 'px)',
+            '-webkit-transform': 'translateX(-' + offset + 'px)'
+          });
       },
 
       _transitionStack = function(direction, toPage){
         if (_getCurrentPage().data('page-number') <= toPage) {
-cl('going forward');
           // note!!! step through each slide between current and destination
           // add the transition-stack-above class
           _setCurrentPage(toPage).addClass('transition-stack-above');
         } else {
-cl('going backward');
           // note!!! step through each slide between current and destination
           // remove the transition-stack-above class
           _getCurrentPage().removeClass('transition-stack-above');
@@ -421,15 +422,19 @@ cl('going backward');
             
             // add a wrapper around the pages and make it wide enough to fit
             // all pages
-            $('.lookbook-page-wrapper')
+            $cache.lookbook
+              .children('.lookbook-page-wrapper')
               .wrapInner('<div class="slide-wrapper"></div>');
-            $('.slide-wrapper').css('width', function(){
-              var ret = 0;
-              $.each($cache.pages, function(index, val) {
-                ret += $(val).width();
+            $cache.lookbook
+              .children('.lookbook-page-wrapper')
+              .children('.slide-wrapper')
+              .css('width', function(){
+                var ret = 0;
+                $.each($cache.pages, function(index, val) {
+                  ret += $(val).width();
+                });
+                return ret * 2 ; //return double for some padding
               });
-              return ret * 2 ; //return double for some padding
-            });
 
             $.each($cache.pages, function(index, val) {
                $(val).addClass('transition-slide');
