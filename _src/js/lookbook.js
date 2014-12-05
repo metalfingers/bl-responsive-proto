@@ -385,7 +385,7 @@ var BloomiesLookbook = function($lookbook, options) {
       // input: boolean / string
       // options: boolean true or a jquery object or a class name 
       stickyNav: function(){
-        if (typeof options.stickyNav === 'boolean') {
+        if (options.stickyNav === true) {
           $cache.lookbook
             .children('.lookbook-pagination')
             .waypoint('sticky', { stuckClass: 'lookbook-sticky' });
