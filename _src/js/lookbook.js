@@ -122,8 +122,8 @@ var BloomiesLookbook = function($lookbook, options) {
 
       // toPage is an int
       _transitionFade = function(direction, toPage){
-        _getCurrentPage().removeClass('transition-fade-in');
-        _setCurrentPage(toPage).addClass('transition-fade-in');
+        _getCurrentPage();
+        _setCurrentPage(toPage);
       },
 
       _transitionScroll = function(direction, toPage){

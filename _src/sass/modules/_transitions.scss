@@ -7,10 +7,10 @@
     .is-deactivated & {
       opacity: 1;
     }
-  }
 
-  &.transition-fade-in {
-    opacity: 1;
+    &.current-page {
+      opacity: 1;
+    }
   }
 
   &.transition-page-scroll {
