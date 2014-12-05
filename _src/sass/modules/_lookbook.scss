@@ -1,6 +1,7 @@
 .lookbook- {
  
   &wrapper {
+    float: left;
     padding: 0 1px;
     position: relative;
 
@@ -101,6 +102,10 @@
     width: 100%;
     z-index: 20;
 
+    &.lookbook-sticky {
+      width: 960px;
+    }
+
     *[data-for-page-number] {
       border-right: 2px solid white;
       color: #fff;
@@ -170,12 +175,20 @@
   }
 
   &social-media {
+    background-color: #fff;
     height: 40px;
     padding-top: 13px;
     text-align: right;
 
     a {
       padding: 0 5px;
+    }
+
+    .back-to-top-button {
+      font-size: 1.5rem !important;
+      left: 48%;
+      position: absolute;
+      text-decoration: none;
     }
   }
 
@@ -184,4 +197,17 @@
     top: 0;
   }
 
+}
+
+.back-to-top.stuck {
+  bottom: 0;
+  position: fixed;
+  width: 960px;
+  z-index: 100;
+}
+
+.end-of-lookbook {
+  float: left;
+  position: relative;
+  width: 100%;
 }

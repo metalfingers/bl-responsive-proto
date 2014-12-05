@@ -290,6 +290,30 @@ var BloomiesLookbook = function($lookbook, options) {
         }
       },
 
+      // backToTop: show/hide back to top button
+      // input: boolean / string 
+      // options: boolean true or a jquery object or a class name 
+      backToTop: function(){
+        var _this = this;
+        if (options.backToTop === true) {
+          $cache.lookbook
+            .after('<div class="end-of-lookbook" />');
+          $cache.lookbook
+            .waypoint(function(){
+              $cache.lookbook
+                .find('.back-to-top')
+                .toggleClass('stuck');
+            });
+          $cache.lookbook
+            .next('.end-of-lookbook')
+            .waypoint(function(){
+              $cache.lookbook
+                .find('.back-to-top')
+                .toggleClass('stuck');
+            }, {offset: '100%'});
+        } 
+      },
+
       // breakPoint: defines the browser width where the lookbook switches 
       //              from desktop to mobile layout
       // type: int
@@ -546,6 +570,13 @@ var BloomiesLookbook = function($lookbook, options) {
       $cache.lookbook.on('touchmove mousemove', function(event){
         // might use this...
       });
+
+      // back to top if we have it
+      $cache.lookbook
+        .find('.back-to-top-button')
+        .click(function(event) {
+          $('body, html').animate({scrollTop: 0}, 500);
+        });
 
       _this.state.handlersSet = true;
     },
