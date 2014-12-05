@@ -324,6 +324,27 @@ var BloomiesLookbook = function($lookbook, options) {
         }
       }, // end setOptions.breakPoint
 
+      // initialLoop: loop through once?
+      initialLoop: function(){
+        var _this = this,
+            loopInterval,
+            i = 0;
+
+        if (options.initialLoop === false) {
+          return;
+        } else {
+          loopInterval = setInterval(function(){
+            if (i < $cache.pages.length) {
+              _this.goToNext();
+              i++;
+            } else {
+              _this.goToPage(1);
+              clearInterval(loopInterval);
+            }
+          }, 1000); // this delay should be configurable
+        }
+      },
+
       // startPage: defines the first slide in the lookbook
       // input: int
       // options: 1[default]...whatever 

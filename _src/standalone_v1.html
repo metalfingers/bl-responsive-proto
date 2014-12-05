@@ -111,22 +111,23 @@
 
 	<script>
 
-		var sunshopLookbook = new BloomiesLookbook($('#qa-auto-look-book'), {
+		var defaultLookBook = new BloomiesLookbook($('#qa-auto-look-book'), {
 															arrowPosition: 'horizontal',
 															breakPoint: 640,
-															transitionDirection: 'horizontal',
-															transitionStyle: 'fade',
+															initialLoop: true,
+															showLeftNavOnOne: true,
 															startPage: 1,
 															stickyNav: false,
-															showLeftNavOnOne: true
+															transitionDirection: 'horizontal',
+															transitionStyle: 'fade'
 														});
 
-		sunshopLookbook.activate();
+		defaultLookBook.activate();
 
 		// hack!!! we're missing the ablove pagechange event so we're 
 		// going to call the goToPage method on the lookbook to make
 		// sure that the lookbook caret is the right place
-		sunshopLookbook.goToPage(1);
+		defaultLookBook.goToPage(1);
 	</script>
 
 </body>
