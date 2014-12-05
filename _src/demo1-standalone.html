@@ -37,63 +37,62 @@
 
 		<div class="row">
 			<div class="back-to-top">&#8607;</div>
-			<div id="sun-shop-lookbook" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+			<div id="qa-auto-look-book" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
 <!-- 				<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
 				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div> -->
-				<ol class="lookbook-pagination hide-for-small-only">
-					<li data-for-page-number="1" class="current-page">section 1</li>
-					<li data-for-page-number="2">section 2</li>
-					<li data-for-page-number="3">section 3</li>
-					<li data-for-page-number="4">section 4</li>
-					<li data-for-page-number="5">section 5</li>
+				<ol id="qa-auto-pagination_container" class="lookbook-pagination hide-for-small-only">
+					<li id="qa-auto-pagination-1" data-for-page-number="1" class="current-page">section 1</li>
+					<li id="qa-auto-pagination-2" data-for-page-number="2">section 2</li>
+					<li id="qa-auto-pagination-3" data-for-page-number="3">section 3</li>
+					<li id="qa-auto-pagination-4" data-for-page-number="4">section 4</li>
+					<li id="qa-auto-pagination-5" data-for-page-number="5">section 5</li>
 				</ol>
 				<!-- <div class="lookbook-caret hide-for-small-only"></div> -->
 
 				<div class="lookbook-page-wrapper">
-					<div class="lookbook-page" data-page-number="1">
+					<div id="qa-auto-page_1" class="lookbook-page" data-page-number="1">
 						<img src="img/demo1/page1.jpg">
 						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta esse magni omnis.</div>
 					</div>
-					<div class="lookbook-page" data-page-number="2">
+					<div id="qa-auto-page_2" class="lookbook-page" data-page-number="2">
 						<img src="img/demo1/page2.jpg">
 						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, odio! Ducimus, itaque.</div>
 					</div>
-					<div class="row lookbook-page" data-page-number="3">
+					<div id="qa-auto-page_3" class="row lookbook-page" data-page-number="3">
 						<div id="demo2" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
-							<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
-							<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
+							<div id="qa-auto-page-3-prev-button" class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
+							<div id="qa-auto-page-3-next-button" class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
 							<div class="lookbook-page-wrapper">
-								<div class="lookbook-page" data-page-number="1">
+								<div id="qa-auto-page_3_slide_1" class="lookbook-page" data-page-number="1">
 									<img src="img/demo1/vid/page1.jpg">
 									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta esse magni omnis.</div>
 								</div>
-								<div class="lookbook-page" data-page-number="2">
+								<div id="qa-auto-page_3_slide_2" class="lookbook-page" data-page-number="2">
 									<video src='img/demo1/Miss_Favela_802x566.mp4' autoplay="true" loop="true" muted="true">
 										<!-- <source src='img/demo1/Miss_Favela_802x566.mp4' type='video/mp4'/>
 										<source src='img/demo1/Miss_Favela_802x566.webmhd.webm' type='video/webm'/> -->
 									</video>
 								</div>
-								<div class="lookbook-page" data-page-number="3">
+								<div id="qa-auto-page_3_slide_3" class="lookbook-page" data-page-number="3">
 									<img src="img/demo1/vid/page3.jpg">
 									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste cum dolorem neque!</div>
 								</div>
-								<div class="lookbook-page" data-page-number="4">
+								<div id="qa-auto-page_3_slide_4" class="lookbook-page" data-page-number="4">
 									<img src="img/demo1/vid/page4.jpg">
 									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum praesentium natus consequuntur.</div>
 								</div>
-								<div class="lookbook-page" data-page-number="5">
+								<div id="qa-auto-page_3_slide_5" class="lookbook-page" data-page-number="5">
 									<img src="img/demo1/vid/page5.jpg">
 									<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur labore quasi, vitae?</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
-					<div class="lookbook-page" data-page-number="4">
+					<div id="qa-auto-page_4" class="lookbook-page" data-page-number="4">
 						<img src="img/demo1/page4.jpg">
 						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum praesentium natus consequuntur.</div>
 					</div>
-					<div class="lookbook-page" data-page-number="5">
+					<div id="qa-auto-page_5" class="lookbook-page" data-page-number="5">
 						<img src="img/demo1/page5.jpg">
 						<div class="lookbook-page-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur labore quasi, vitae?</div>
 					</div>
@@ -109,7 +108,7 @@
 
 	<script>
 
-		var sunshopLookbook = new BloomiesLookbook($('#sun-shop-lookbook'), {
+		var sunshopLookbook = new BloomiesLookbook($('#qa-auto-look-book'), {
 															arrowPosition: 'horizontal',
 															breakPoint: 0,
 															transitionDirection: 'horizontal',
@@ -125,7 +124,7 @@
 			function(event) {
         var currentPageItemOffset = Math.floor(
 	        	( $('.lookbook-pagination .current-page').offset().left - // item
-	        	$('#sun-shop-lookbook').offset().left ) + // container
+	        	$('#qa-auto-look-book').offset().left ) + // container
 	        	( $('.lookbook-pagination .current-page').width() / 2 )
         	);
         $('.lookbook-caret').css({left: currentPageItemOffset});
