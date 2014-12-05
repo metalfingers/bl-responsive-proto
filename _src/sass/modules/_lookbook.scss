@@ -1,6 +1,7 @@
 .lookbook- {
  
   &wrapper {
+    padding: 0 1px;
     position: relative;
 
     &.is-active {
@@ -41,20 +42,28 @@
     background-repeat: no-repeat;
     background-size: 100%;
     cursor: pointer;
-    height: 8.5%;
+    height: 12.5%;
     position: absolute;
-    top: 50%;
-    width: 2%; 
+    top: 47%;
+    width: 4%; 
     z-index: 20;
 
     &.go-to-prev {
       background-image: url('../img/nav-prev.png');
-      left: 0%;
+      left: 2%;
+
+      &:hover {
+        background-image: url('../img/nav-prev-hover.png');
+      }
     }
 
     &.go-to-next {
       background-image: url('../img/nav-next.png');
-      left: 98%;
+      left: 94%;
+
+      &:hover {
+        background-image: url('../img/nav-next-hover.png');
+      }
     }
 
     &.layout-vertical {
@@ -80,11 +89,12 @@
   }
 
   &pagination {
-    background-color: rgba(255, 255, 255, .75);
+    background-color: rgba(0, 0, 0, .75);
     float: left;
     font-size: 1rem;
-    height: 30px;
+    height: 50px;
     margin-bottom: 10px;
+    padding-top: 16px;
     position: absolute;
     text-align: right;
     text-transform: uppercase;
@@ -92,11 +102,25 @@
     z-index: 20;
 
     *[data-for-page-number] {
+      border-right: 2px solid white;
+      color: #fff;
       cursor: pointer;
       display: inline-block;
       float: none;
+      font-size: 1.5em;
+      line-height: 1em;
       margin-right: 0;
-      padding: 7px 14px;
+      padding: 0 9px;
+
+      &:hover,
+      &.current-page {
+        color: #993333;
+      }
+
+      &:last-child {
+        border: 0;
+        margin-right: 10px;
+      }
     }
   }
 
@@ -143,6 +167,16 @@
       width: 100%;
     }
 
+  }
+
+  &social-media {
+    height: 40px;
+    padding-top: 13px;
+    text-align: right;
+
+    a {
+      padding: 0 5px;
+    }
   }
 
   &sticky {

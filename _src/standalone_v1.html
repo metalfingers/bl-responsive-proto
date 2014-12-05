@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" ><![endif]-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	
+		Demo 1
+	</title>
+
+	@@include('includes/meta.html')
+
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" href="./css/sunshop.css"> -->
+	<style>
+		.lookbook-page {
+			background-color: #ccc;
+			height: 660px;
+		}
+		.lookbook-page-caption {
+			font-size: 2em;
+			left: 11%;
+			line-height: 1.3em;
+			top: 14%;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+	@@include('includes/header.html')
+
+	
+	<main role="main" class="l-site-content">
+
+		<!-- .lookbook-wrapper>.lookbook-nav-arrow.layout-vertical.go-to-prev+.lookbook-nav-arrow.layout-vertical.go-to-next+(.lookbook-page-wrapper>(.lookbook-page>img[src=http://lorempixel.com/1000/400/food/$])*3) -->
+
+		<div class="row">
+			<div id="qa-auto-look-book" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+				<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
+				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
+				<ol id="qa-auto-pagination_container" class="lookbook-pagination hide-for-small-only">
+					<li id="qa-auto-pagination-1" data-for-page-number="1" class="current-page">1</li>
+					<li id="qa-auto-pagination-2" data-for-page-number="2">2</li>
+					<li id="qa-auto-pagination-3" data-for-page-number="3">3</li>
+					<li id="qa-auto-pagination-4" data-for-page-number="4">4</li>
+					<li id="qa-auto-pagination-5" data-for-page-number="5">5</li>
+				</ol>
+				<div class="lookbook-page-wrapper">
+					<div id="qa-auto-page_1" class="lookbook-page" data-page-number="1">
+						<div class="lookbook-page-caption">
+							This is the intro slide of the lookbook.<br />
+							Transition = Fade<br />
+							Left/Right Arrow Style = On hover, color changes<br />
+							Pagination Style = On hover color changes, on selected color change stays<br />
+							Social = No hover stlye<br />
+							On Slide One = No left arrow
+						</div>
+					</div>
+					<div id="qa-auto-page_2" class="lookbook-page" data-page-number="2">
+						<div class="lookbook-page-caption">
+							This is slide 2 of the lookbook<br />
+							Transition = Fade<br />
+							Left/Right Arrow Style = On hover, color changes <br />
+							Pagination Style = On hover color changes, on selected color change stays<br />
+							Social = No hover stlye
+						</div>
+					</div>
+					<div id="qa-auto-page_3" class="lookbook-page" data-page-number="3">
+						<div class="lookbook-page-caption">
+							This is slide 3 of the lookbook<br />
+							Transition = Fade<br />
+							Left/Right Arrow Style = On hover, color changes <br />
+							Pagination Style = On hover color changes, on selected color change stays<br />
+							Social = No hover stlye
+						</div>
+					</div>
+					<div id="qa-auto-page_4" class="lookbook-page" data-page-number="4">
+						<div class="lookbook-page-caption">
+							This is slide 4 of the lookbook<br />
+							Transition = Fade<br />
+							Left/Right Arrow Style = On hover, color changes <br />
+							Pagination Style = On hover color changes, on selected color change stays<br />
+							Social = No hover stlye
+						</div>
+					</div>
+					<div id="qa-auto-page_5" class="lookbook-page" data-page-number="5">
+						<div class="lookbook-page-caption">
+							This is slide 5 of the lookbook<br />
+							Transition = Fade<br />
+							Left/Right Arrow Style = On hover, color changes <br />
+							Pagination Style = On hover color changes, on selected color change stays<br />
+							Social = No hover stlye
+						</div>
+					</div>
+
+				</div>
+				<div class="row">
+					<div class="lookbook-social-media">
+						<a href="#"><img src="img/test1/facebook.png" alt=""></a>
+						<a href="#"><img src="img/test1/twitter.png" alt=""></a>
+						<a href="#"><img src="img/test1/pinterest.png" alt=""></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+	</main>
+	
+	@@include('includes/footer.html')
+
+	<script>
+
+		var sunshopLookbook = new BloomiesLookbook($('#qa-auto-look-book'), {
+															arrowPosition: 'horizontal',
+															breakPoint: 640,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'fade',
+															startPage: 1,
+															stickyNav: false,
+															showLeftNavOnOne: true
+														});
+
+		sunshopLookbook.activate();
+
+		// hack!!! we're missing the ablove pagechange event so we're 
+		// going to call the goToPage method on the lookbook to make
+		// sure that the lookbook caret is the right place
+		sunshopLookbook.goToPage(1);
+	</script>
+
+</body>
+</html>
