@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>	
-		Demo 1 - Standalone
+		Demo 1 - Standalone (Vertical)
 	</title>
 
 	@@include('includes/meta.html')
@@ -17,7 +17,7 @@
 			height: 660px;
 		}
 		.lookbook-page-caption {
-			font-size: 2em;
+			font-size: 2em; 
 			left: 11%;
 			line-height: 1.3em;
 			top: 14%;
@@ -38,7 +38,7 @@
 			}
 
 			.lookbook-page:nth-child(odd) {
-				background-color: #b3b3b2;
+				background-color: #333333;
 			}
 
 			.lookbook-page[data-page-number="1"] .lookbook-page-caption {
@@ -54,12 +54,6 @@
 				font-weight: bold;
 				text-decoration: underline;
 			}
-
-			.lookbook-page[data-page-number="4"] .lookbook-page-caption {
-				border: 1px solid purple;
-				width: 30%;
-				float: right;
-			}
 		}
 	</style>
 </head>
@@ -74,71 +68,44 @@
 
 		<div class="row">
 			<div id="qa-auto-look-book" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
-				<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
-				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
+				<!-- <div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
+				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div> -->
 				<ol id="qa-auto-pagination_container" class="lookbook-pagination hide-for-small-only">
 					<li id="qa-auto-pagination-1" data-for-page-number="1" class="current-page">1</li>
 					<li id="qa-auto-pagination-2" data-for-page-number="2">2</li>
 					<li id="qa-auto-pagination-3" data-for-page-number="3">3</li>
-					<li id="qa-auto-pagination-4" data-for-page-number="4">4</li>
-					<li id="qa-auto-pagination-5" data-for-page-number="5">5</li>
 				</ol>
 				<div class="lookbook-page-wrapper">
 					<div id="qa-auto-page_1" class="lookbook-page" data-page-number="1">
 						<div class="lookbook-page-caption">
 							This is the intro slide of the lookbook.<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes<br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye<br />
-								On Slide One = No left arrow</span>
+							Sticky Nav - On hover, numbers change color. On selected color change<br /> 
+							stays. On click, numbers are anchored to corresponding slides. Navigation <br />
+							sticks when BCOM header is off page. <br />
+							Back-To-Top - When Sticky Nav is activated, Back-To-Top bar anchored to <br />
+							Sticky Nav point.<br />
+							Social = No hover stlye
 						</div>
 					</div>
 					<div id="qa-auto-page_2" class="lookbook-page" data-page-number="2">
 						<div class="lookbook-page-caption">
 							This is slide 2 of the lookbook<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes <br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye</span>
 						</div>
 					</div>
 					<div id="qa-auto-page_3" class="lookbook-page" data-page-number="3">
 						<div class="lookbook-page-caption">
 							This is slide 3 of the lookbook<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes <br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye</span>
 						</div>
 					</div>
-					<div id="qa-auto-page_4" class="lookbook-page" data-page-number="4">
-						<div class="lookbook-page-caption">
-							This is slide 4 of the lookbook<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes <br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye</span>
-						</div>
-					</div>
-					<div id="qa-auto-page_5" class="lookbook-page" data-page-number="5">
-						<div class="lookbook-page-caption">
-							This is slide 5 of the lookbook<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes <br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye</span>
-						</div>
-					</div>
-
 				</div>
-				<div class="row">
-					<div class="lookbook-social-media">
+				<!-- <div class="row"> -->
+					<div class="lookbook-social-media back-to-top">
+						<a href="#" class="back-to-top-button">Back-To-Top</a>
 						<a href="#"><img src="img/test1/facebook.png" alt=""></a>
 						<a href="#"><img src="img/test1/twitter.png" alt=""></a>
 						<a href="#"><img src="img/test1/pinterest.png" alt=""></a>
 					</div>
-				</div>
+				<!-- </div> -->
 			</div>
 		</div>
 		
@@ -151,13 +118,14 @@
 
 		var defaultLookBook = new BloomiesLookbook($('#qa-auto-look-book'), {
 															arrowPosition: 'horizontal',
+															backToTop: true,
 															breakPoint: 640,
 															initialLoop: false,
 															showLeftNavOnOne: true,
 															startPage: 1,
-															stickyNav: false,
-															transitionDirection: 'horizontal',
-															transitionStyle: 'fade'
+															stickyNav: true,
+															transitionDirection: 'vertical',
+															transitionStyle: 'pageScroll'
 														});
 
 		defaultLookBook.activate();
