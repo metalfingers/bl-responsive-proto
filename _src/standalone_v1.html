@@ -23,6 +23,44 @@
 			top: 14%;
 			width: 100%;
 		}
+
+		@media only screen and (max-width: 40.063em) {
+			.lookbook-page .lookbook-page-caption {
+				background-color: transparent;
+				left: auto;
+				position: relative;
+				top: auto;
+				width: 100%;
+			}
+
+			.lookbook-page:nth-child(even) {
+				background-color: #d6bfbf;
+			}
+
+			.lookbook-page:nth-child(odd) {
+				background-color: #b3b3b2;
+			}
+
+			.lookbook-page[data-page-number="1"] .lookbook-page-caption {
+				font-size: 4em;
+			}
+
+			.lookbook-page[data-page-number="2"] .lookbook-page-caption {
+				margin-top: 50%;
+			}
+
+			.lookbook-page[data-page-number="3"] .lookbook-page-caption {
+				color: green;
+				font-weight: bold;
+				text-decoration: underline;
+			}
+
+			.lookbook-page[data-page-number="4"] .lookbook-page-caption {
+				border: 1px solid purple;
+				width: 30%;
+				float: right;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -49,47 +87,47 @@
 					<div id="qa-auto-page_1" class="lookbook-page" data-page-number="1">
 						<div class="lookbook-page-caption">
 							This is the intro slide of the lookbook.<br />
-							Transition = Fade<br />
-							Left/Right Arrow Style = On hover, color changes<br />
-							Pagination Style = On hover color changes, on selected color change stays<br />
-							Social = No hover stlye<br />
-							On Slide One = No left arrow
+							<span class="hide-for-small-only">Transition = Fade<br />
+								Left/Right Arrow Style = On hover, color changes<br />
+								Pagination Style = On hover color changes, on selected color change stays<br />
+								Social = No hover stlye<br />
+								On Slide One = No left arrow</span>
 						</div>
 					</div>
 					<div id="qa-auto-page_2" class="lookbook-page" data-page-number="2">
 						<div class="lookbook-page-caption">
 							This is slide 2 of the lookbook<br />
-							Transition = Fade<br />
-							Left/Right Arrow Style = On hover, color changes <br />
-							Pagination Style = On hover color changes, on selected color change stays<br />
-							Social = No hover stlye
+							<span class="hide-for-small-only">Transition = Fade<br />
+								Left/Right Arrow Style = On hover, color changes <br />
+								Pagination Style = On hover color changes, on selected color change stays<br />
+								Social = No hover stlye</span>
 						</div>
 					</div>
 					<div id="qa-auto-page_3" class="lookbook-page" data-page-number="3">
 						<div class="lookbook-page-caption">
 							This is slide 3 of the lookbook<br />
-							Transition = Fade<br />
-							Left/Right Arrow Style = On hover, color changes <br />
-							Pagination Style = On hover color changes, on selected color change stays<br />
-							Social = No hover stlye
+							<span class="hide-for-small-only">Transition = Fade<br />
+								Left/Right Arrow Style = On hover, color changes <br />
+								Pagination Style = On hover color changes, on selected color change stays<br />
+								Social = No hover stlye</span>
 						</div>
 					</div>
 					<div id="qa-auto-page_4" class="lookbook-page" data-page-number="4">
 						<div class="lookbook-page-caption">
 							This is slide 4 of the lookbook<br />
-							Transition = Fade<br />
-							Left/Right Arrow Style = On hover, color changes <br />
-							Pagination Style = On hover color changes, on selected color change stays<br />
-							Social = No hover stlye
+							<span class="hide-for-small-only">Transition = Fade<br />
+								Left/Right Arrow Style = On hover, color changes <br />
+								Pagination Style = On hover color changes, on selected color change stays<br />
+								Social = No hover stlye</span>
 						</div>
 					</div>
 					<div id="qa-auto-page_5" class="lookbook-page" data-page-number="5">
 						<div class="lookbook-page-caption">
 							This is slide 5 of the lookbook<br />
-							Transition = Fade<br />
-							Left/Right Arrow Style = On hover, color changes <br />
-							Pagination Style = On hover color changes, on selected color change stays<br />
-							Social = No hover stlye
+							<span class="hide-for-small-only">Transition = Fade<br />
+								Left/Right Arrow Style = On hover, color changes <br />
+								Pagination Style = On hover color changes, on selected color change stays<br />
+								Social = No hover stlye</span>
 						</div>
 					</div>
 
@@ -114,7 +152,7 @@
 		var defaultLookBook = new BloomiesLookbook($('#qa-auto-look-book'), {
 															arrowPosition: 'horizontal',
 															breakPoint: 640,
-															initialLoop: true,
+															initialLoop: false,
 															showLeftNavOnOne: true,
 															startPage: 1,
 															stickyNav: false,
