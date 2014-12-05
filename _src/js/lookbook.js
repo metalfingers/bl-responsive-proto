@@ -330,7 +330,11 @@ var BloomiesLookbook = function($lookbook, options) {
             loopInterval,
             i = 0;
 
-        if (options.initialLoop === false) {
+        if ( $cache.lookbook.hasClass('is-deactivated') ) {
+          return;
+        }
+
+        if ( options.initialLoop === false ) {
           return;
         } else {
           loopInterval = setInterval(function(){
