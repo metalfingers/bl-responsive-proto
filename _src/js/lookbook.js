@@ -249,6 +249,7 @@ var BloomiesLookbook = function($lookbook, options) {
       }
 
       _this.state.isActive = true;
+      $.waypoints('refresh');
 
     },
 
