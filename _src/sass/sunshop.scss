@@ -6,7 +6,7 @@
 .sun-shop-lookbook {
 
   .lookbook-caret {
-    background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/nav-current-page.png');
+    background-image: url('../img/sunshop/nav-current-page.png');
     height: 14px;
     position: absolute;
     top: 30px;
@@ -70,7 +70,7 @@
       height: auto;
 
       span {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/test1/close.png');
+        background-image: url('../img/test1/close.png');
       }
     }
   }
@@ -80,7 +80,7 @@
     text-transform: uppercase;
 
     span {
-      background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/test1/hamburger.png');
+      background-image: url('../img/test1/hamburger.png');
       height: 14px;
       position: absolute;
       right: 0;
@@ -109,7 +109,7 @@
       }
 
       .designer-valentino {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/valentino.png');
+        background-image: url('../img/sunshop/valentino.png');
         height: 161px;
         right: 480px;
         top: 40px;
@@ -117,7 +117,7 @@
       }
 
       .designer-dior {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/dior.png');
+        background-image: url('../img/sunshop/dior.png');
         height: 161px;
         right: 251px;
         top: 43px;
@@ -125,7 +125,7 @@
       }
 
       .designer-dolce {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/dolce.png');
+        background-image: url('../img/sunshop/dolce.png');
         height: 161px;
         right: 23px;
         top: 40px;
@@ -133,7 +133,7 @@
       }
 
       .designer-gucci {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/gucci.png');
+        background-image: url('../img/sunshop/gucci.png');
         height: 191px;
         right: 480px;
         top: 242px;
@@ -141,7 +141,7 @@
       }
 
       .designer-ray-ban {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/rayban.png');
+        background-image: url('../img/sunshop/rayban.png');
         height: 190px;
         right: 251px;
         top: 242px;
@@ -149,7 +149,7 @@
       }
 
       .designer-tom-ford {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/tomford.png');
+        background-image: url('../img/sunshop/tomford.png');
         height: 193px;
         right: 23px;
         top: 242px;
@@ -175,7 +175,7 @@
       }
 
       .style-oversized {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/oversized.png');
+        background-image: url('../img/sunshop/oversized.png');
         height: 130px;
         right: 470px;
         top: 64px;
@@ -183,7 +183,7 @@
       }
 
       .style-polarized {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/polarized.png');
+        background-image: url('../img/sunshop/polarized.png');
         height: 130px;
         right: 319px;
         top: 111px;
@@ -191,7 +191,7 @@
       }
       
       .style-wayfarer {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/wayfarer.png');
+        background-image: url('../img/sunshop/wayfarer.png');
         height: 124px;
         right: 483px;
         top: 253px;
@@ -199,7 +199,7 @@
       }
       
       .style-shield {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/shield.png');
+        background-image: url('../img/sunshop/shield.png');
         height: 123px;
         right: 176px;
         top: 251px;
@@ -207,7 +207,7 @@
       }
       
       .style-aviator {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/aviator.png');
+        background-image: url('../img/sunshop/aviator.png');
         height: 130px;
         right: -9px;
         top: 96px;
@@ -215,7 +215,7 @@
       }
       
       .style-cat-eye {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/cat-eye.png');
+        background-image: url('../img/sunshop/cat-eye.png');
         height: 119px;
         right: 11px;
         top: 293px;
@@ -227,7 +227,7 @@
     &[data-page-number="4"] {
 
       .curve-appeal {
-        background-image: url('${baseUrlAssets}/dyn_img/cat_splash/img/sunshop/page03_badge.png');
+        background-image: url('../img/sunshop/page03_badge.png');
         cursor: pointer;
         height: 315px;
         position: absolute;

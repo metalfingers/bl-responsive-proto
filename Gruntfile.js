@@ -185,19 +185,24 @@ module.exports = function(grunt){
         files: [{
           expand: true,
           cwd: '<%= build.srcRoot %>',
-          src: '*.html',
+          src: '*.css',
           dest: '<%= build.html.dest %>'          
         }]
       },
       prod: {
         options: {
           includesDir: '<%= build.srcRoot %>',
+          processIncludeContents: function(content, vars){
+            content = content.replace('../img/', '/web20/assets/img/specialProjects/lookbook-vertical/');
+
+            return content;
+          }
         },
         files: [{
           expand: true,
-          cwd: '<%= build.srcRoot %>',
-          src: '*.html',
-          dest: '<%= build.html.dest %>'          
+          cwd: '<%= build.css.dest %>',
+          src: '*.css',
+          dest: '<%= build.css.dest %>'          
         }]
       }
     },
@@ -206,12 +211,14 @@ module.exports = function(grunt){
       dev: {
         options: {
           compass: true,
+          debugInfo: false,
+          lineNumbers: false,
           style: 'expanded',
           sourcemap: 'auto'
         },
         files: {
-          '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main.scss',
-          '<%= build.css.dest %>/sunshop.css' : '<%= build.css.src %>/sunshop.scss'
+          '<%= build.css.dest %>/main.css' : '<%= build.css.src %>/main_dev.scss',
+          '<%= build.css.dest %>/sunshop.css' : '<%= build.css.src %>/sunshop_dev.scss'
         }
       },
       prod: {

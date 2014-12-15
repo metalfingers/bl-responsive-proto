@@ -1,19 +1,8 @@
-
-
-
-
-
-
-
-
-
-
-
-
-@include media-query('medium') {
-
-  
-
+.bold {
+  font-weight: bold;
+  font-weight: 700;
 }
 
-
+.plus {
+  background-image: url('../img/plus.png')
+}

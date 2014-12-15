@@ -30,7 +30,7 @@ var BloomiesLookbook = function($lookbook, options) {
           nextBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-next'),
           prevBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-prev')
         };
-
+window.$cache = $cache;
       },
 
       _slideDimensions = function(){

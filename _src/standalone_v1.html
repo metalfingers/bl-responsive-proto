@@ -12,54 +12,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
 	<!-- <link rel="stylesheet" href="./css/sunshop.css"> -->
 	<style>
-		.lookbook-page {
-			background-color: #ccc;
-			height: 660px;
-		}
-		.lookbook-page-caption {
-			font-size: 2em;
-			left: 11%;
-			line-height: 1.3em;
-			top: 14%;
-			width: 100%;
-		}
-
 		@media only screen and (max-width: 40.063em) {
-			.lookbook-page .lookbook-page-caption {
-				background-color: transparent;
-				left: auto;
-				position: relative;
-				top: auto;
-				width: 100%;
-			}
 
-			.lookbook-page:nth-child(even) {
-				background-color: #d6bfbf;
-			}
-
-			.lookbook-page:nth-child(odd) {
-				background-color: #b3b3b2;
-			}
-
-			.lookbook-page[data-page-number="1"] .lookbook-page-caption {
-				font-size: 4em;
-			}
-
-			.lookbook-page[data-page-number="2"] .lookbook-page-caption {
-				margin-top: 50%;
-			}
-
-			.lookbook-page[data-page-number="3"] .lookbook-page-caption {
-				color: green;
-				font-weight: bold;
-				text-decoration: underline;
-			}
-
-			.lookbook-page[data-page-number="4"] .lookbook-page-caption {
-				border: 1px solid purple;
-				width: 30%;
-				float: right;
-			}
 		}
 	</style>
 </head>
@@ -76,40 +30,56 @@
 			<div id="qa-auto-look-book" class="sun-shop-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
 				<div class="lookbook-nav-arrow layout-vertical go-to-prev hide-for-small-only"></div>
 				<div class="lookbook-nav-arrow layout-vertical go-to-next hide-for-small-only"></div>
-				<ol id="qa-auto-pagination_container" class="lookbook-pagination hide-for-small-only">
-					<li id="qa-auto-pagination-1" data-for-page-number="1" class="current-page">1</li>
-					<li id="qa-auto-pagination-2" data-for-page-number="2">2</li>
-					<li id="qa-auto-pagination-3" data-for-page-number="3">3</li>
-					<li id="qa-auto-pagination-4" data-for-page-number="4">4</li>
-					<li id="qa-auto-pagination-5" data-for-page-number="5">5</li>
-				</ol>
 				<div class="lookbook-page-wrapper">
 					<div id="qa-auto-page_1" class="lookbook-page" data-page-number="1">
+						<img src="img/page1.jpg" alt="">
 						<div class="lookbook-page-caption">
-							This is the intro slide of the lookbook.<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes<br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye<br />
-								On Slide One = No left arrow</span>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP THIS LOOK: </span>Lorem ipsum dolor sit amet.
+							</div>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP THIS LOOK: </span>Lorem ipsum dolor sit amet.
+							</div>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP ARTISTIC BRIGHTS</span>
+							</div>
 						</div>
 					</div>
 					<div id="qa-auto-page_2" class="lookbook-page" data-page-number="2">
+						<img src="img/page2.jpg" alt="">
 						<div class="lookbook-page-caption">
-							This is slide 2 of the lookbook<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes <br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye</span>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP THIS LOOK</span>Lorem ipsum dolor sit amet.
+							</div>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP THIS LOOK</span>Lorem ipsum dolor sit amet.
+							</div>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP ARTISTIC BRIGHTS</span>
+							</div>
 						</div>
 					</div>
 					<div id="qa-auto-page_3" class="lookbook-page" data-page-number="3">
+						<img src="img/page3.jpg" alt="">
 						<div class="lookbook-page-caption">
-							This is slide 3 of the lookbook<br />
-							<span class="hide-for-small-only">Transition = Fade<br />
-								Left/Right Arrow Style = On hover, color changes <br />
-								Pagination Style = On hover color changes, on selected color change stays<br />
-								Social = No hover stlye</span>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP THIS LOOK</span>Lorem ipsum dolor sit amet.
+							</div>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP THIS LOOK</span>Lorem ipsum dolor sit amet.
+							</div>
+							<div class="caption-section">
+								<div class="plus"></div>
+								<span class="bold">SHOP ARTISTIC BRIGHTS</span>
+							</div>
 						</div>
 					</div>
 					<div id="qa-auto-page_4" class="lookbook-page" data-page-number="4">
@@ -132,11 +102,19 @@
 					</div>
 
 				</div>
+				<ol id="qa-auto-pagination_container" class="lookbook-pagination hide-for-small-only">
+					<li id="qa-auto-pagination-1" data-for-page-number="1" class="current-page"></li>
+					<li id="qa-auto-pagination-2" data-for-page-number="2"></li>
+					<li id="qa-auto-pagination-3" data-for-page-number="3"></li>
+					<li id="qa-auto-pagination-4" data-for-page-number="4"></li>
+					<li id="qa-auto-pagination-5" data-for-page-number="5"></li>
+				</ol>
 				<div class="row">
+				<hr>
 					<div class="lookbook-social-media">
-						<a href="#"><img src="img/test1/facebook.png" alt=""></a>
-						<a href="#"><img src="img/test1/twitter.png" alt=""></a>
-						<a href="#"><img src="img/test1/pinterest.png" alt=""></a>
+						<a href="#" id="qa-auto-facebook-bottom"><img src="img/test1/facebook.png" alt=""></a>
+						<a href="#" id="qa-auto-twitter-bottom"><img src="img/test1/twitter.png" alt=""></a>
+						<a href="#" id="qa-auto-pinterest-bottom"><img src="img/test1/pinterest.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -152,7 +130,7 @@
 		var defaultLookBook = new BloomiesLookbook($('#qa-auto-look-book'), {
 															arrowPosition: 'horizontal',
 															breakPoint: 640,
-															initialLoop: false,
+															initialLoop: true,
 															showLeftNavOnOne: true,
 															startPage: 1,
 															stickyNav: false,
