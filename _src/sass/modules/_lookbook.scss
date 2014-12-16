@@ -45,25 +45,29 @@
     cursor: pointer;
     height: 12.5%;
     position: absolute;
-    top: 47%;
-    width: 4%; 
+    top: 40%;
+    width: 2%; 
     z-index: 20;
 
     &.go-to-prev {
       background-image: url('../img/nav-prev.png');
-      left: 2%;
+      left: 0;
 
       &:hover {
-        background-image: url('../img/nav-prev-hover.png');
+        transform: scale(1.2);
+        transition: transform .1s linear;
+      }
+
       }
     }
 
     &.go-to-next {
       background-image: url('../img/nav-next.png');
-      left: 94%;
+      left: 98%;
 
       &:hover {
-        background-image: url('../img/nav-next-hover.png');
+        transform: scale(1.2);
+        transition: transform .1s linear;
       }
     }
 
@@ -146,7 +150,7 @@
     left: 0;
     position: absolute;
     text-align: center;
-    top: 109%;
+    top: 107%;
     width: 100%;
 
     @media only screen and (max-width: 40.063em) {
@@ -207,7 +211,10 @@
 }
 
 .caption-section {
+  cursor: pointer;
   display: inline-block;
   margin-right: 0;
-  width: 240px;
+  padding-top: 5px;
+  text-align: left;
+  width: 260px;
 }
