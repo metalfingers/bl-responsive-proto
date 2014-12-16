@@ -163,9 +163,16 @@
 
   &social-media {
     background-color: #fff;
-    height: 40px;
-    padding-top: 13px;
-    text-align: right;
+    height: 90px;
+    padding-top: 45px;
+    text-align: center;
+
+    &-wrapper {
+      border-bottom: 3px solid #000;
+      margin: 0 auto;
+      padding-bottom: 10px;
+      width: 140px;
+    }
 
     a {
       padding: 0 5px;
