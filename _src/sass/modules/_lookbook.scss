@@ -58,6 +58,8 @@
         transition: transform .1s linear;
       }
 
+      .on-start-page > & {
+        display: none !important;
       }
     }
 

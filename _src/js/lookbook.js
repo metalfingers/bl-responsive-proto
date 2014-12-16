@@ -58,6 +58,9 @@ window.$cache = $cache;
           el.removeClass('current-page');
         });
 
+        // remove first and last page classes from lookbook wrapper
+        $cache.lookbook.removeClass('on-start-page on-last-page');
+
         // use jQuery's .filter method because IE8 Arrays 
         // don't have filter built in
         $($cache.pages) 
@@ -77,6 +80,12 @@ window.$cache = $cache;
               return $(this).data('for-page-number') === pageNum;
             })[0]
             .addClass('current-page');
+        }
+
+        if (_getCurrentPage().data('page-number') === options.startPage) {
+          $cache.lookbook.addClass('on-start-page');
+        } else if (_getCurrentPage().data('page-number') === $cache.pages[$cache.pages.length -1].data('page-number')){
+          $cache.lookbook.addClass('on-last-page');
         }
 
         return _getCurrentPage();
