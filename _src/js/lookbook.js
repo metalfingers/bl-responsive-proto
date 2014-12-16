@@ -118,9 +118,11 @@ window.$cache = $cache;
             slideNumber = options.introPage;
           } else if (direction === 'backward') {
             slideNumber = options.startPage;
+          } else if (options.loop !== false){
+            slideNumber = options.startPage;
           } else {
             slideNumber = $cache.pages.length;
-          } 
+          }
 
         } 
 

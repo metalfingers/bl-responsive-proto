@@ -125,6 +125,7 @@
 															arrowPosition: 'horizontal',
 															breakPoint: 640,
 															initialLoop: true,
+															loop: true,
 															showLeftNavOnOne: true,
 															startPage: 1,
 															stickyNav: false,
@@ -134,7 +135,7 @@
 
 		defaultLookBook.activate();
 
-		// hack!!! we're missing the ablove pagechange event so we're 
+		// hack!!! we're missing the above pagechange event so we're 
 		// going to call the goToPage method on the lookbook to make
 		// sure that the lookbook caret is the right place
 		defaultLookBook.goToPage(1);
