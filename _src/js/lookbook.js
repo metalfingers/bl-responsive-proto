@@ -268,7 +268,7 @@ window.$cache = $cache;
       }
 
       _this.state.isActive = true;
-      $.waypoints('refresh');
+      // $.waypoints('refresh');
 
     },
 
