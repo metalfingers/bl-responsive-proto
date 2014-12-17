@@ -211,9 +211,17 @@ window.$cache = $cache;
         _this.state.nameSpace = 'lookBook' + Date.now();
       }
 
-      // cache the lookbook pieces first! (if they haven't already been cached)
+      // cache the lookbook pieces! (if they haven't already been cached)
       if ($.isEmptyObject($cache)) {
         _cacheLookBook();
+      }
+
+      // add MEW class
+      if ( (typeof BLOOMIES !== undefined) !== true){
+        if( BLOOMIES.isMEW === true ) {
+          $cache.lookbook.addClass('in-MEW');
+          loadCSS(window.location.origin + '/web20/assets/style/specialProjects/lookbook-horizontal/lookbook-horizontal.css');
+        }
       }
 
       // run through the options at least once

@@ -83,11 +83,9 @@ module.exports = function(grunt){
       dev: {
         src: [
               '<%= build.js.src %>/vendor/jquery-1.11.1.min.js',
-              '<%= build.js.src %>/vendor/jquery-ui.min.js',
-              '<%= build.js.src %>/vendor/lodash.underscore.min.js',
-              '<%= build.js.src %>/vendor/foundation.min.js',
               '<%= build.js.src %>/vendor/waypoints.min.js',
               '<%= build.js.src %>/vendor/waypoints-sticky.min.js',
+              '<%= build.js.src %>/vendor/loadcss.js',
               '<%= build.js.src %>/lookbook.js',
               '<%= build.js.src %>/scripts.js'],
         dest: '<%= build.js.dest %>/scripts.min.js'
@@ -95,11 +93,9 @@ module.exports = function(grunt){
       prod: {
         src: [
               '<%= build.tmp %>/vendor/jquery-1.11.1.min.js',
-              '<%= build.js.src %>/vendor/jquery-ui.min.js',
-              '<%= build.tmp %>/vendor/lodash.underscore.min.js',
-              '<%= build.js.src %>/vendor/foundation.min.js',
               '<%= build.js.src %>/vendor/waypoints.min.js',
               '<%= build.js.src %>/vendor/waypoints-sticky.min.js',
+              '<%= build.js.src %>/vendor/loadcss.js',
               '<%= build.tmp %>/lookbook.js',
               '<%= build.tmp %>/scripts.js'],
         dest: '<%= build.js.dest %>/scripts.min.js'
@@ -185,7 +181,7 @@ module.exports = function(grunt){
         files: [{
           expand: true,
           cwd: '<%= build.srcRoot %>',
-          src: '*.css',
+          src: '*.html',
           dest: '<%= build.html.dest %>'          
         }]
       },
@@ -200,9 +196,9 @@ module.exports = function(grunt){
         },
         files: [{
           expand: true,
-          cwd: '<%= build.css.dest %>',
-          src: '*.css',
-          dest: '<%= build.css.dest %>'          
+          cwd: '<%= build.srcRoot %>',
+          src: '*.html',
+          dest: '<%= build.html.dest %>'          
         }]
       }
     },
