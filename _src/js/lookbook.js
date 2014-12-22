@@ -388,6 +388,7 @@ window.$cache = $cache;
             } else {
               _this.goToPage(1);
               clearInterval(loopInterval);
+              $cache.lookbook.addClass('qa-auto-initial-loop-ended');
             }
           }, 1000); // this delay should be configurable
         }
