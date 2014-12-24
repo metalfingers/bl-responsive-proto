@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us" ><![endif]-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	
+		Demo 1 - Standalone
+	</title>
+
+	@@include('includes/meta.html')
+
+	<style>
+		/* http://spritegen.website-performance.org/ */
+		.sprite-btn { 
+			background: url('img/newbs/sprite-btn.png') no-repeat top left; 
+			cursor: pointer;
+			margin-bottom: 8px;
+		}
+		.sprite-btn-bedding:hover{ background-position: 0 0; width: 83px !important; height: 37px !important; } 
+		.sprite-btn-bedding{ background-position: 0 -42px; width: 83px !important; height: 37px !important; } 
+		.sprite-btn-clothing:hover{ background-position: 0 -84px; width: 93px !important; height: 37px !important; } 
+		.sprite-btn-clothing{ background-position: 0 -126px; width: 93px !important; height: 37px !important; } 
+		.sprite-btn-download-square:hover{ background-position: 0 -168px; width: 105px !important; height: 57px !important; } 
+		.sprite-btn-download-square{ background-position: 0 -230px; width: 105px !important; height: 57px !important; } 
+		.sprite-btn-facebook:hover{ background-position: 0 -292px; width: 15px !important; height: 16px !important; } 
+		.sprite-btn-facebook{ background-position: 0 -313px; width: 15px !important; height: 16px !important; } 
+		.sprite-btn-feeding:hover{ background-position: 0 -334px; width: 83px !important; height: 37px !important; } 
+		.sprite-btn-feeding{ background-position: 0 -376px; width: 83px !important; height: 37px !important; } 
+		.sprite-btn-gear:hover{ background-position: 0 -418px; width: 55px !important; height: 37px !important; } 
+		.sprite-btn-gear{ background-position: 0 -460px; width: 55px !important; height: 37px !important; } 
+		.sprite-btn-newborn:hover{ background-position: 0 -502px; width: 15px !important; height: 16px !important; } 
+		.sprite-btn-pinterest{ background-position: 0 -523px; width: 15px !important; height: 16px !important; } 
+		.sprite-btn-shop:hover{ background-position: 0 -544px; width: 105px !important; height: 37px !important; } 
+		.sprite-btn-shop{ background-position: 0 -586px; width: 105px !important; height: 37px !important; margin-bottom: 14px; } 
+		.sprite-btn-toys:hover{ background-position: 0 -628px; width: 53px !important; height: 37px !important; } 
+		.sprite-btn-toys{ background-position: 0 -670px; width: 53px !important; height: 37px !important; } 
+		.sprite-btn-twitter:hover{ background-position: 0 -712px; width: 15px !important; height: 16px !important; } 
+		.sprite-btn-twitter{ background-position: 0 -733px; width: 15px !important; height: 16px !important; }	
+		
+		.sprite-btn-facebook,
+		.sprite-btn-twitter,
+		.sprite-btn-pinterest {
+			margin-left: 19px;
+			margin-bottom: 19px;
+		}
+
+		.overlay-bedding {
+			background: url('img/newbs/sprites-bedding.jpg') no-repeat top left; 
+		}
+		.overlay-bedding.air-purifier{ background-position: 0 0; width: 230px; height: 330px; } 
+		.overlay-bedding.bath-toys{ background-position: -235px 0; width: 230px; height: 330px; } 
+		.overlay-bedding.blankets{ background-position: -470px 0; width: 230px; height: 330px; } 
+		.overlay-bedding.hooded-towel{ background-position: -705px 0; width: 230px; height: 330px; } 
+		.overlay-bedding.monitor{ background-position: -940px 0; width: 230px; height: 330px; } 
+		.overlay-bedding.nightlight{ background-position: -1175px 0; width: 230px; height: 330px; } 
+
+		.overlay-clothing {
+			background: url('img/newbs/sprites-clothing.jpg') no-repeat top left; 
+		}
+		.overlay-clothing.bodysuit{ background-position: 0 0; width: 230px; height: 330px; } 
+		.overlay-clothing.coverall{ background-position: -235px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.footie{ background-position: -470px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.jacket{ background-position: -705px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.lightweight-hats{ background-position: -940px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.moses-basket{ background-position: -1175px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.side-snap-shirt{ background-position: -1410px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.socks{ background-position: -1645px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.swaddle-blanket{ background-position: -1880px 0; width: 230px; height: 330px; } 
+		.overlay-clothing.sweater{ background-position: 0 -335px; width: 230px; height: 330px; } 
+		.overlay-clothing.two-piece{ background-position: -235px -335px; width: 230px; height: 330px; } 
+
+
+
+		.overlay-feeding {
+			background: url('img/newbs/sprites-feeding.jpg') no-repeat top left; 
+		}
+		.overlay-feeding.bibs{ background-position: 0 0; width: 230px; height: 330px; } 
+		.overlay-feeding.burp-cloths{ background-position: -235px 0; width: 230px; height: 330px; } 
+		.overlay-feeding.food-prep{ background-position: -470px 0; width: 230px; height: 330px; } 
+		.overlay-feeding.high-chair{ background-position: -705px 0; width: 230px; height: 330px; } 
+		.overlay-feeding.plates-bowls-cups{ background-position: -940px 0; width: 230px; height: 330px; } 
+		.overlay-feeding.spoons{ background-position: -1175px 0; width: 230px; height: 330px; } 
+
+
+		.overlay-gear {
+			background: url('img/newbs/sprites-gear.jpg') no-repeat top left; 
+		}
+		.overlay-gear.bouncer{ background-position: 0 0; width: 230px; height: 330px; } 
+		.overlay-gear.car-seat{ background-position: -235px 0; width: 230px; height: 330px; } 
+		.overlay-gear.carrier{ background-position: -470px 0; width: 230px; height: 330px; } 
+		.overlay-gear.diaper-bag{ background-position: -705px 0; width: 230px; height: 330px; } 
+		.overlay-gear.full-size-stroller{ background-position: -940px 0; width: 230px; height: 330px; } 
+		.overlay-gear.lightweight-stroller{ background-position: -1175px 0; width: 230px; height: 330px; } 
+		.overlay-gear.playard{ background-position: -1410px 0; width: 230px; height: 330px; } 
+
+
+		.overlay-toys {
+			background: url('img/newbs/sprites-toys.jpg') no-repeat top left; 
+		}
+		.overlay-toys.activity-toys{ background-position: 0 0; width: 230px; height: 330px; } 
+		.overlay-toys.bath-toys{ background-position: -235px 0; width: 230px; height: 330px; } 
+		.overlay-toys.learning-toys{ background-position: -470px 0; width: 230px; height: 330px; } 
+		.overlay-toys.play-mat{ background-position: -705px 0; width: 230px; height: 330px; } 
+		.overlay-toys.plush-toys{ background-position: -940px 0; width: 230px; height: 330px; } 
+
+
+		.overlay-header {
+			background: url('img/newbs/sprites-header.jpg') no-repeat top left; 
+		}
+		.overlay-header.bedding{ background-position: 0 0; width: 445px; height: 128px; } 
+		.overlay-header.clothing{ background-position: -450px 0; width: 445px; height: 128px; } 
+		.overlay-header.feeding{ background-position: -900px 0; width: 445px; height: 128px; } 
+		.overlay-header.gear{ background-position: -1350px 0; width: 445px; height: 128px; } 
+		.overlay-header.toys{ background-position: -1800px 0; width: 445px; height: 128px; } 
+
+		.overlay-general {
+			background: url('img/newbs/sprites-general.png') no-repeat top left; 
+		}
+		.overlay-general.btn-close{ background-position: 0 0; cursor: pointer; width: 35px; height: 34px; } 
+		.overlay-general.btn-next{ background-position: -40px 0; cursor: pointer; width: 22px !important; height: 38px !important; left: 875px; top: 127px;} 
+		.overlay-general.btn-prev{ background-position: -67px 0; cursor: pointer; width: 20px !important; height: 43px !important; left: 35px; top: 127px; } 
+		.overlay-general.btn-size{ background-position: -92px 0; cursor: pointer; width: 105px; height: 36px; } 
+		.overlay-general.tips{ 
+			background-color: #fff;
+			background-position: -202px 0; 
+			display: block;
+			height: 25px;
+			left: 332px; 
+			position: absolute;
+			top: -10px;
+			width: 78px; 
+		} 
+
+		.sprite-shop-all {
+			background: url('img/newbs/sprites-shop-all.png') no-repeat top left; 
+		}
+		.sprite-shop-all.bedding{ background-position: 0 0; width: 250px; height: 19px; } 
+		.sprite-shop-all.clothing{ background-position: -255px 0; width: 189px; height: 19px; } 
+		.sprite-shop-all.feeding{ background-position: -449px 0; width: 189px; height: 19px; } 
+		.sprite-shop-all.gear{ background-position: -643px 0; width: 189px; height: 19px; } 
+		.sprite-shop-all.toys{ background-position: -837px 0; width: 147px; height: 19px; } 
+
+		.lookbook-pagination {
+			width: 105px !important;
+		}
+
+		.lookbook-pagination *[data-for-page-number] {
+			border-radius: 0;
+			cursor: pointer;
+			display: block;
+		}
+
+		.lookbook-pagination *[data-for-page-number]:hover, 
+		.lookbook-pagination *[data-for-page-number].current-page {
+			background-color: transparent;
+		}
+
+
+		.lookbook-sticky {
+			top: 31px;
+		}
+
+		.launch-overlay {
+			cursor: pointer;
+		}
+
+		.overlay-background {
+			display: none;
+		}
+
+		.overlay-background.is-visible {
+			display: block;
+			height: 100%;
+			left: 0;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 95;
+		}
+
+		.overlay-wrapper {
+			display: none;
+		}
+
+		.overlay-wrapper.is-visible {
+			background-color: #fff;
+			display: block;
+			position: absolute;
+			top: 44px;
+			width: 930px;
+			z-index: 100;
+		}
+
+		.overlay-close {
+			position: absolute;
+			right: 15px;
+			top: 15px;
+		}
+
+		.overlay-header {
+			left: 245px;
+			position: absolute;
+			top: 24px;
+		}
+
+		.overlay-action-items {
+			position: absolute;
+			top: 39px;
+		}
+
+		.overlay-wrapper .lookbook-wrapper {
+			display: none;
+			margin-bottom: 25px;
+			margin-top: 182px;
+		}
+		.overlay-wrapper .lookbook-wrapper.is-visible {
+			display: block;
+		}
+		.overlay-wrapper .lookbook-page {
+			height: 330px;
+		}
+
+		.overlay-tips-wrapper {
+			border: 1px solid #3d64a0;
+			clear: both;
+			display: none;
+			font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+			margin: 0 auto 32px;
+			padding: 23px 105px;
+			position: relative;
+			text-align: center;
+			width: 740px;
+		}
+
+		.overlay-tips-wrapper.is-visible {
+			display: block;
+		}
+
+		.tip-section {
+			color: #343434;
+			display: none;
+			font-size: 1.2em;
+		}
+
+		.tip-section.is-visible {
+			display: block;
+		}
+
+		.tip-section h2 {
+			color: #000;
+			letter-spacing: 1px;
+			margin-top: 1em;
+		}
+
+		.lookbook-item:first-child {
+			margin-left: 95px;
+		}
+
+		.lookbook-item {
+			display: inline-block;
+			float: left;
+			height: 330px;
+			margin-right: 25px;
+			width: 230px;
+		}
+
+		.tip-section {
+			display: none;
+		}
+
+		.tip-section.current-section {
+			display: block;
+		}
+
+		@media only screen and (max-width: 40.063em) {
+
+		}
+	</style>
+</head>
+<body>
+
+	@@include('includes/header.html')
+
+	
+	<main role="main" class="l-site-content">
+
+		<div class="row">
+			<div id="qa-auto-look-book" class="lookbook-wrapper small-24 medium-24 large-24 column">
+				<ol id="qa-auto-pagination_container" class="lookbook-pagination hide-for-small-only">
+					<li id="qa-auto-pagination-1" data-for-page-number="1" class="sprite-btn sprite-btn-toys current-page"></li>
+					<li id="qa-auto-pagination-2" data-for-page-number="2" class="sprite-btn sprite-btn-clothing "></li>
+					<li id="qa-auto-pagination-3" data-for-page-number="3" class="sprite-btn sprite-btn-bedding "></li>
+					<li id="qa-auto-pagination-4" data-for-page-number="4" class="sprite-btn sprite-btn-feeding "></li>
+					<li id="qa-auto-pagination-5" data-for-page-number="4" class="sprite-btn sprite-btn-gear "></li>
+					<li class="sprite-btn sprite-btn-download-square"></li>
+					<li class="sprite-btn sprite-btn-shop"></li>
+					<li class="sprite-btn sprite-btn-facebook"></li>
+					<li class="sprite-btn sprite-btn-twitter"></li>
+					<li class="sprite-btn sprite-btn-pinterest"></li>
+				</ol>
+				<div class="lookbook-page-wrapper">
+					<div class="lookbook-page" data-page-number="0">
+						<img src="img/newbs/page0.jpg" >
+					</div>
+					<div class="lookbook-page" data-page-number="1">
+						<img class="launch-overlay" src="img/newbs/page1.jpg" data-show-overlay="toys">
+					</div>
+					<div class="lookbook-page" data-page-number="2">
+						<img class="launch-overlay" src="img/newbs/page2.jpg" data-show-overlay="clothing">
+					</div>
+					<div class="lookbook-page" data-page-number="3">
+						<img class="launch-overlay" src="img/newbs/page3.jpg" data-show-overlay="bedding">
+					</div>
+					<div class="lookbook-page" data-page-number="4">
+						<img class="launch-overlay" src="img/newbs/page4a.jpg" data-show-overlay="feeding">
+						<img class="launch-overlay" src="img/newbs/page4b.jpg" data-show-overlay="gear">
+					</div>
+				</div>
+			</div>
+
+			<div class="overlay-background"></div>
+			<div class="overlay-wrapper">
+				<div class="overlay-close overlay-general btn-close"></div>
+				<div class="overlay-header toys"></div>
+				<div class="overlay-action-items">
+					<div class="sprite-btn sprite-btn-download-square"></div>
+					<div class="overlay-general btn-size"></div>
+				</div>
+			
+				<!-- TOYS -->
+				<div class="toys-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+					<div class="lookbook-nav-arrow go-to-prev overlay-general btn-prev"></div>
+					<div class="lookbook-nav-arrow go-to-next overlay-general btn-next"></div>
+					<div class="lookbook-page-wrapper">
+						<div class="lookbook-page" data-page-number="1">
+							<a href="#" class="lookbook-item overlay-toys activity-toys"></a>
+							<a href="#" class="lookbook-item overlay-toys plush-toys"></a>
+							<a href="#" class="lookbook-item overlay-toys learning-toys"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="2">
+							<a href="#" class="lookbook-item overlay-toys bath-toys"></a>
+							<a href="#" class="lookbook-item overlay-toys play-mat"></a>
+						</div>
+					</div>
+				</div>
+			
+				<!-- CLOTHING -->
+				<div class="clothing-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+					<div class="lookbook-nav-arrow go-to-prev overlay-general btn-prev"></div>
+					<div class="lookbook-nav-arrow go-to-next overlay-general btn-next"></div>
+					<div class="lookbook-page-wrapper">
+						<div class="lookbook-page" data-page-number="1">
+							<a href="#" class="lookbook-item overlay-clothing side-snap-shirt"></a>
+							<a href="#" class="lookbook-item overlay-clothing bodysuit"></a>
+							<a href="#" class="lookbook-item overlay-clothing sweater"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="2">
+							<a href="#" class="lookbook-item overlay-clothing lightweight-hats"></a>
+							<a href="#" class="lookbook-item overlay-clothing socks"></a>
+							<a href="#" class="lookbook-item overlay-clothing two-piece"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="3">
+							<a href="#" class="lookbook-item overlay-clothing jacket"></a>
+							<a href="#" class="lookbook-item overlay-clothing coverall"></a>
+							<a href="#" class="lookbook-item overlay-clothing footie"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="4">
+							<a href="#" class="lookbook-item overlay-clothing swaddle-blanket"></a>
+							<a href="#" class="lookbook-item overlay-clothing moses-basket"></a>
+						</div>
+					</div>
+				</div>
+
+			
+				<!-- BEDDING -->
+				<div class="bedding-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+					<div class="lookbook-nav-arrow go-to-prev overlay-general btn-prev"></div>
+					<div class="lookbook-nav-arrow go-to-next overlay-general btn-next"></div>
+					<div class="lookbook-page-wrapper">
+						<div class="lookbook-page" data-page-number="1">
+							<a href="#" class="lookbook-item overlay-bedding blankets"></a>
+							<a href="#" class="lookbook-item overlay-bedding monitor"></a>
+							<a href="#" class="lookbook-item overlay-bedding air-purifier"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="2">
+							<a href="#" class="lookbook-item overlay-bedding nightlight"></a>
+							<a href="#" class="lookbook-item overlay-bedding bath-toys"></a>
+							<a href="#" class="lookbook-item overlay-bedding hooded-towel"></a>
+						</div>
+					</div>
+				</div>
+			
+				<!-- FEEDING -->
+				<div class="feeding-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+					<div class="lookbook-nav-arrow go-to-prev overlay-general btn-prev"></div>
+					<div class="lookbook-nav-arrow go-to-next overlay-general btn-next"></div>
+					<div class="lookbook-page-wrapper">
+						<div class="lookbook-page" data-page-number="1">
+							<a href="#" class="lookbook-item overlay-feeding bibs"></a>
+							<a href="#" class="lookbook-item overlay-feeding burp-cloths"></a>
+							<a href="#" class="lookbook-item overlay-feeding plates-bowls-cups"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="2">
+							<a href="#" class="lookbook-item overlay-feeding spoons"></a>
+							<a href="#" class="lookbook-item overlay-feeding food-prep"></a>
+							<a href="#" class="lookbook-item overlay-feeding high-chair"></a>
+						</div>
+					</div>
+				</div>
+			
+				<!-- GEAR -->
+				<div class="gear-lookbook lookbook-wrapper small-24 medium-24 large-24 column">
+					<div class="lookbook-nav-arrow go-to-prev overlay-general btn-prev"></div>
+					<div class="lookbook-nav-arrow go-to-next overlay-general btn-next"></div>
+					<div class="lookbook-page-wrapper">
+						<div class="lookbook-page" data-page-number="1">
+							<a href="#" class="lookbook-item overlay-gear bouncer"></a>
+							<a href="#" class="lookbook-item overlay-gear car-seat"></a>
+							<a href="#" class="lookbook-item overlay-gear carrier"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="2">
+							<a href="#" class="lookbook-item overlay-gear diaper-bag"></a>
+							<a href="#" class="lookbook-item overlay-gear lightweight-stroller"></a>
+							<a href="#" class="lookbook-item overlay-gear full-size-stroller"></a>
+						</div>
+						<div class="lookbook-page" data-page-number="3">
+							<a href="#" class="lookbook-item overlay-gear playard"></a>
+						</div>
+					</div>
+				</div>
+
+				<!-- TIPS SECTION -->
+				<div class="overlay-tips-wrapper">
+					<span class="overlay-general tips"></span>
+					<div class="tip-section toys">
+						<h2>ACTIVITY TOYS</h2>
+						Toys that spin, crinkle and squeak encourage your baby to fine-tune the much-needed skills of holding, grasping and letting go. 
+						<h2>PLUSH TOYS</h2>
+						Giving babies a feel for different textures stimulates their sense of touch. Limit plush toys to playtime and never put them in the crib.
+						<h2>BATH TOYS</h2>
+						Bath toys make tub time more fun, but they also teach your tot to pour, squeeze, splash and explore.
+					</div>
+					<div class="tip-section clothing">
+						<h2>SIDE-SNAP SHIRTS</h2>
+						Tops that open in front make it a snap to dress your newborn without irritating the umbilical cord.
+						<h2>BODYSUITS</h2>
+						Once the umbilical cord falls off, these baby basics will become your little one’s best bet for all-day, everyday comfort.
+						<h2>FOOTIES</h2>
+						Keep your peewee’s piggies warm without an endless search for lost socks. Bottom closures make diaper changes oh-so-much easier.
+						<h2>SWADDLE BLANKETS</h2>
+						Swaddle blankets are the ultimate baby soothers—their snug-as-a-bug fit reminds infants of the familiar feeling of the womb.
+					</div>
+					<div class="tip-section bedding">
+						<h2>BEDDING &amp; BATH</h2>
+						Doing the same bedtime routine each night signals to your little one that it’s time
+						to wind down for sleep. Giving your baby a bath, reading and singing lullabies are common pre-Zs activities.
+						<h2>MONITOR</h2>
+						If you wake up in the middle of the night, a video monitor offers at-a-glance reassurance that your baby’s still snoozing.
+						<h2>NIGHTLIGHT</h2>
+						A low glow offers just enough light to help you find your way during middle-of-the-night feedings without overwhelming you with a glaring bulb.
+					</div>
+					<div class="tip-section feeding">
+						<h2>BIBS</h2>
+						Cotton bibs sop up dribbles and can get tossed straight into the washing
+						machine post-feeding. Firmer styles with pockets catch plummeting morsels
+						and wipe clean with a damp cloth.
+						<h2>BURP CLOTHS</h2>
+						Spills and spit up are the new normal. Keep a stockpile of burp cloths on hand.
+						<h2>PLATES, BOWLS &amp; CUPS</h2>
+						Sippies are a great (read: spill-proof!) way to transition your growing tot from
+						a bottle to an open cup. 
+						<h2>HIGH CHAIR</h2>
+						Always strap your child into a high chair and place it far enough away from walls
+						and counters that your little kicker can’t accidentally tip over.
+					</div>
+					<div class="tip-section gear">
+						<h2>BOUNCER</h2>
+						The nest-like seat and rocking motion make this a comforting pick. Just be sure to
+						secure your little me and stay within eyeshot.
+						<h2>CAR SEAT</h2>
+						Your baby’s first car seat should be designed specifically for infants and sit rear-facing
+						in the car—the safest way for tiny tots to travel.
+						<h2>CARRIER</h2>
+						Most newborns crave close contact with their parents. A baby carrier lets you snuggle
+						up while keeping your hands free.
+						<h2>LIGHTWEIGHT STROLLER + ACCESSORIES</h2>
+						Great for travel and running errands, lightweight strollers are easy to pick up, fold and store, but shouldn’t be used until around age 6 months when babies develop better head and neck control.
+						<h2>FULL-SIZE STROLLER + ACCESSORIES</h2>
+						Because infants can’t sit up on their own, the seat on their first set of wheels should be able to recline to flat. Look for a full-size stroller with different seating options so it grows with your child.
+					</div>
+				</div>
+
+
+				<!-- SHOP ALL X -->
+				<div class="shop-all-wrapper">
+					<a href="" class="sprite-shop-all"></a>
+				</div>
+			</div>
+			
+		</div>
+		
+
+	</main>
+	
+	@@include('includes/footer.html')
+
+	<script>
+
+		var newbornLookBook = new BloomiesLookbook($('#qa-auto-look-book'), {
+															arrowPosition: 'vertical',
+															breakPoint: 640,
+															initialLoop: false,
+															loop: false,
+															showLeftNavOnOne: false,
+															startPage: 0,
+															stickyNav: true,
+															transitionDirection: 'vertical',
+															transitionStyle: 'pageScroll'
+														}),
+		toysLookBook = 	new BloomiesLookbook($('.toys-lookbook'), {
+															arrowPosition: 'horizontal',
+															breakPoint: 640,
+															initialLoop: false,
+															loop: true,
+															showLeftNavOnOne: false,
+															startPage: 1,
+															stickyNav: false,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'slide'
+														}),
+		clothingLookBook = 	new BloomiesLookbook($('.clothing-lookbook'), {
+															arrowPosition: 'horizontal',
+															breakPoint: 640,
+															initialLoop: false,
+															loop: true,
+															showLeftNavOnOne: false,
+															startPage: 1,
+															stickyNav: false,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'slide'
+														}),
+		beddingLookBook = 	new BloomiesLookbook($('.bedding-lookbook'), {
+															arrowPosition: 'horizontal',
+															breakPoint: 640,
+															initialLoop: false,
+															loop: true,
+															showLeftNavOnOne: false,
+															startPage: 1,
+															stickyNav: false,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'slide'
+														}),
+		feedingLookBook = 	new BloomiesLookbook($('.feeding-lookbook'), {
+															arrowPosition: 'horizontal',
+															breakPoint: 640,
+															initialLoop: false,
+															loop: true,
+															showLeftNavOnOne: false,
+															startPage: 1,
+															stickyNav: false,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'slide'
+														}),
+		gearLookBook = 	new BloomiesLookbook($('.gear-lookbook'), {
+															arrowPosition: 'horizontal',
+															breakPoint: 640,
+															initialLoop: false,
+															loop: true,
+															showLeftNavOnOne: false,
+															startPage: 1,
+															stickyNav: false,
+															transitionDirection: 'horizontal',
+															transitionStyle: 'slide'
+														});
+
+		newbornLookBook.activate();
+		toysLookBook.activate();
+		clothingLookBook.activate();
+		beddingLookBook.activate();
+		feedingLookBook.activate();
+		gearLookBook.activate();
+
+
+		// SHOW OVERLAY
+		function showOverlay(overlayName){
+			var overlayTop = $('body').scrollTop() + 40,
+					overlayLeft = $(window).width() / 2 - (465);
+			$('.overlay-background').addClass('is-visible');
+			$('.overlay-wrapper')
+				.addClass('is-visible')
+				.css({
+					top: overlayTop,
+					left: overlayLeft
+				});
+			$('.overlay-header')
+				.removeClass()
+				.addClass('overlay-header ' + overlayName);
+
+			$('.lookbook-wrapper').removeClass('is-visible');
+			$('.' + overlayName + '-lookbook').addClass('is-visible');
+
+			$('.overlay-tips-wrapper').addClass('is-visible');
+
+			$('.tip-section').removeClass('is-visible');
+			$('.tip-section.' + overlayName).addClass('is-visible');
+
+			$('.sprite-shop-all')
+				.removeClass()
+				.addClass(overlayName);
+		}
+
+		function hideOverlay(){
+			$('.overlay-background, .overlay-wrapper').removeClass('is-visible');
+		}
+
+		$('.launch-overlay').click(function(event) {
+			showOverlay($(this).data('show-overlay'));
+		});
+
+		// HIDE OVERLAY
+		$('.overlay-background, .overlay-close').click(function(event) {
+			hideOverlay();
+		});
+
+	</script>
+
+</body>
+</html>

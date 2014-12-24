@@ -402,7 +402,7 @@ window.$cache = $cache;
       },
 
       // stickyNav: ...adds a sticky class to the nav
-      // input: boolean / string
+      // input: boolean / string / object
       // options: boolean true or a jquery object or a class name 
       stickyNav: function(){
         if (options.stickyNav === true) {
