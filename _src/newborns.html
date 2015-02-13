@@ -141,6 +141,8 @@
 		.sprite-shop-all.toys{ background-position: -837px 0; width: 147px; height: 19px; } 
 
 		.lookbook-pagination {
+			position: absolute;
+			top: 31px;
 			width: 105px !important;
 		}
 
@@ -153,11 +155,6 @@
 		.lookbook-pagination *[data-for-page-number]:hover, 
 		.lookbook-pagination *[data-for-page-number].current-page {
 			background-color: transparent;
-		}
-
-
-		.lookbook-sticky {
-			top: 31px;
 		}
 
 		.launch-overlay {
@@ -212,6 +209,7 @@
 			display: none;
 			margin-bottom: 25px;
 			margin-top: 182px;
+			width: 860px;
 		}
 		.overlay-wrapper .lookbook-wrapper.is-visible {
 			display: block;
@@ -506,7 +504,8 @@
 
 	<script>
 
-		var newbornLookBook = new BloomiesLookbook($('#qa-auto-look-book'), {
+		var $ = jQuery,
+				newbornLookBook = new BloomiesLookbook($('#qa-auto-look-book'), {
 															arrowPosition: 'vertical',
 															breakPoint: 640,
 															initialLoop: false,

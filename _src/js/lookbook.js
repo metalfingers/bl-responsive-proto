@@ -7,7 +7,8 @@ var cl = function(arg){
 var BloomiesLookbook = function($lookbook, options) {
   "use strict";
 
-  var $cache = {},
+  var $ = jQuery,
+      $cache = {},
 
       _cacheLookBook = function(){
         $cache = {}; // empty the cache
@@ -30,9 +31,12 @@ var BloomiesLookbook = function($lookbook, options) {
           nextBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-next'),
           prevBtn: $cache.lookbook.children('.lookbook-nav-arrow.go-to-prev')
         };
-window.$cache = $cache;
+
       },
 
+      // Figure out the dimensions of both the tallest anf widest pages in the lookbook and apply
+      // them to the lookbook.
+      // @todo: add an option in the options object to enable overridding this or making the lookbook fluid
       _slideDimensions = function(){
         var tallest = 0,
             widest = 0;
@@ -102,6 +106,8 @@ window.$cache = $cache;
       //                the realm of possibilty (a number less than 0 or greater
       //                than the length of the lookbook)
       // args:          direction (int) ['forward', 'backward', 'introPage']
+      //                transitionFunction (func) ['_transitionFade', '_transitionScroll', '_transitionSkip', etc.]
+      //                slideNumber (int) 
       _keepInBounds = function(direction, transitionFunction, slideNumber) {
         // if we're going to where we already are, just return
         if (_getCurrentPage().data('page-number') === slideNumber) {
@@ -131,35 +137,38 @@ window.$cache = $cache;
         transitionFunction(direction, slideNumber);
       },
 
-      // toPage is an int
-      _transitionFade = function(direction, toPage){
+      // this transition fades slides in and out
+      _transitionFade = function(direction, toPageNum){
         _getCurrentPage();
-        _setCurrentPage(toPage);
+        _setCurrentPage(toPageNum);
       },
 
-      _transitionScroll = function(direction, toPage){
+      // this transition scrolls the page down to the appropriate slide
+      _transitionScroll = function(direction, toPageNum){
         var $newPage = $($cache.pages) 
                         .filter(function(index) {
                           return $(this).data('page-number') === toPage;
                         })[0];
         $('body, html').animate({scrollTop: $newPage.offset().top}, 500);
-        _setCurrentPage(toPage);
+        _setCurrentPage(toPageNum);
       },
 
-      _transitionSkip = function(direction, toPage){
+      // to do...
+      _transitionSkip = function(direction, toPageNum){
 
       },
 
-      _transitionSlide = function(direction, toPage){
+      // this transition slides from the current slide to the one passed in
+      _transitionSlide = function(direction, toPageNum){
         var offset = 0;
 
         // get the offset that we're going to be sliding to
         $.each($cache.pages, function(index, val) {
-          if ($(val).data('page-number') < toPage) {
+          if ($(val).data('page-number') < toPageNum) {
             offset += $(val).width();
           }
         });
-        _setCurrentPage(toPage);
+        _setCurrentPage(toPageNum);
         $cache.lookbook
           .children('.lookbook-page-wrapper')
           .children('.slide-wrapper')
@@ -169,16 +178,18 @@ window.$cache = $cache;
           });
       },
 
-      _transitionStack = function(direction, toPage){
-        if (_getCurrentPage().data('page-number') <= toPage) {
+      // this is so far into alpha that it's unusable. it's supposed to be a transition that looks
+      // like one slide overlaying another...
+      _transitionStack = function(direction, toPageNum){
+        if (_getCurrentPage().data('page-number') <= toPageNum) {
           // note!!! step through each slide between current and destination
           // add the transition-stack-above class
-          _setCurrentPage(toPage).addClass('transition-stack-above');
+          _setCurrentPage(toPageNum).addClass('transition-stack-above');
         } else {
           // note!!! step through each slide between current and destination
           // remove the transition-stack-above class
           _getCurrentPage().removeClass('transition-stack-above');
-          _setCurrentPage(toPage);
+          _setCurrentPage(toPageNum);
         }
       };
 
@@ -207,20 +218,25 @@ window.$cache = $cache;
       }
 
       // second thing second. namespace the thing (unless it already has one)!
+      // we care about namespacing so that we can namespace the events attached 
+      // to various elements on the lookbook
       if (_this.state.nameSpace === null) {
         _this.state.nameSpace = 'lookBook' + Date.now();
       }
 
       // cache the lookbook pieces! (if they haven't already been cached)
+      // we do this only so that we can send it back to the instantiating variable
       if ($.isEmptyObject($cache)) {
         _cacheLookBook();
       }
 
-      // add MEW class
+      // add MEW class and load in mobile css
       if ( (typeof BLOOMIES !== undefined) !== true){
         if( BLOOMIES.isMEW === true ) {
           $cache.lookbook.addClass('in-MEW');
-          loadCSS(window.location.origin + '/web20/assets/style/specialProjects/lookbook-horizontal/lookbook-horizontal.css');
+          if (options.mobileCSS !== undefined) {
+            loadCSS(mobileCSS);
+          }
         }
       }
 
@@ -316,21 +332,21 @@ window.$cache = $cache;
       backToTop: function(){
         var _this = this;
         if (options.backToTop === true) {
-          $cache.lookbook
-            .after('<div class="end-of-lookbook" />');
-          $cache.lookbook
-            .waypoint(function(){
-              $cache.lookbook
-                .find('.back-to-top')
-                .toggleClass('stuck');
-            });
-          $cache.lookbook
-            .next('.end-of-lookbook')
-            .waypoint(function(){
-              $cache.lookbook
-                .find('.back-to-top')
-                .toggleClass('stuck');
-            }, {offset: '100%'});
+          // $cache.lookbook
+          //   .after('<div class="end-of-lookbook" />');
+          // $cache.lookbook
+          //   .waypoint(function(){
+          //     $cache.lookbook
+          //       .find('.back-to-top')
+          //       .toggleClass('stuck');
+          //   });
+          // $cache.lookbook
+          //   .next('.end-of-lookbook')
+          //   .waypoint(function(){
+          //     $cache.lookbook
+          //       .find('.back-to-top')
+          //       .toggleClass('stuck');
+          //   }, {offset: '100%'});
         } 
       },
 
@@ -406,14 +422,32 @@ window.$cache = $cache;
       // options: boolean true or a jquery object or a class name 
       stickyNav: function(){
         if (options.stickyNav === true) {
-          $cache.lookbook
-            .children('.lookbook-pagination')
-            .waypoint('sticky', { stuckClass: 'lookbook-sticky' });
-        } else if (options.stickyNav instanceof jQuery) {
-          options.stickyNav.waypoint('sticky', { stuckClass: 'lookbook-sticky' });
-        } else if (typeof options.stickyNav === 'string') {
-          $( options.stickyNav ).waypoint('sticky', { stuckClass: 'lookbook-sticky' });
-        }
+          $(window).scroll(function(event) {
+            var winST = $(window).scrollTop(), // window scrolltop
+                lbOST = $cache.lookbook.offset().top,
+                $lbPagi = $cache.lookbook.children('.lookbook-pagination'); // lookbook pagination
+            if (winST > lbOST && // top of lookbook
+              winST < (lbOST + ($cache.lookbook.height() - $(window).height())) ) {
+              $lbPagi.addClass('lookbook-sticky');
+            } else {
+              $lbPagi.removeClass('lookbook-sticky');
+            }
+          });
+        } 
+//           $cache.lookbook
+//             .children('.lookbook-pagination')
+//             .waypoint('sticky', { stuckClass: 'lookbook-sticky' });
+
+// if window.scrolltop > top of lookbook offset
+//   add class 'lookbook-sticky'
+// else
+//   remove class 'lookbook-sticky'
+
+        // } else if (options.stickyNav instanceof jQuery) {
+        //   options.stickyNav.waypoint('sticky', { stuckClass: 'lookbook-sticky' });
+        // } else if (typeof options.stickyNav === 'string') {
+        //   $( options.stickyNav ).waypoint('sticky', { stuckClass: 'lookbook-sticky' });
+        // }
       },      
 
       // introPage: defines the lookbook's intro page. 
@@ -498,6 +532,11 @@ window.$cache = $cache;
             
             // add a wrapper around the pages and make it wide enough to fit
             // all pages
+            $.each($cache.pages, function(index, el) {
+      cl('in default');
+              el.css('width', $cache.lookbook.outerWidth(true) );
+              el.css('position', 'absolute');
+            });
             $cache.lookbook
               .children('.lookbook-page-wrapper')
               .wrapInner('<div class="slide-wrapper"></div>');
@@ -507,6 +546,8 @@ window.$cache = $cache;
               .css('width', function(){
                 var ret = 0;
                 $.each($cache.pages, function(index, val) {
+// debugger;
+                  cl($(val));
                   ret += $(val).width();
                 });
                 return ret * 2 ; //return double for some padding
